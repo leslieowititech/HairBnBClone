@@ -5,6 +5,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import * as sessionActions from "./store/session";
 
 import { Header } from "./components/Header";
+import Navigation from "./components/Navigation";
 
 function App() {
   const dispatch = useDispatch();
