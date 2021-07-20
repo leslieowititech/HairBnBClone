@@ -1,10 +1,10 @@
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 const LoginFormPage = () => {
     return (
         <form>
-            <imput>Username</imput>
-            <input>Password</input>
+            <input type="text" name="userName"/>
+            <input type="text" name="password"/>
             <button type='submit'>Login</button>
         </form>
     )
