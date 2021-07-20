@@ -3,6 +3,7 @@ import React from 'react';
 import './index.css';
 
 import ReactDOM from 'react-dom';
+
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
@@ -18,12 +19,15 @@ import './fonts/AirbnbCerealBlack.ttf';
 // import './fonts/AirbnbCerealLight.tff';
 // import './fonts/AirbnbCerealMedium.tff';
 
+
 const store = configureStore();
 
 if (process.env.NODE_ENV !== 'production') {
+
   restoreCSRF();
 
   window.csrfFetch = csrfFetch;
+
   window.store = store;
 }
 
@@ -43,3 +47,4 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root'),
 );
+
