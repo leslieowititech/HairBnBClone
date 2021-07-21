@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     Location.hasMany(models.User, {foreignKey: 'userId'})
     Location.hasMany(models.Booking, {foreignKey: 'locationId'})
+    Location.hasMany(models.Image, {foreignKey: 'locationId'})
   };
   return Location;
 };
