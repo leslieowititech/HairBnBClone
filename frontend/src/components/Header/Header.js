@@ -1,8 +1,11 @@
 import React from 'react';
 import { useHistory } from 'react-router';
+import { NavLink } from 'react-router-dom';
+
 import './Header.css';
 
 export const Header = () => {
+  const logoUrl = 'http://assets.stickpng.com/images/580b57fcd9996e24bc43c513.png';
   const history = useHistory();
 
   const reddirect = () => {
@@ -12,7 +15,9 @@ export const Header = () => {
 
     return (
         <div className="header">
-          <div className="logo">logo</div>  
+          <div className="logo-div">
+              <NavLink exact to="/"><img src={logoUrl} alt="logo" className="logo"/></NavLink>
+          </div>
           <div className="middle-nav-div">
             <nav className="middle-nav">
               <li className="header-li">Hair Spots</li>
