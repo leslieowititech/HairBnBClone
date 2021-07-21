@@ -8,6 +8,7 @@ import * as sessionActions from "./store/session";
 import { Header } from "./components/Header/Header";
 
 import Navigation from "./components/Navigation";
+import BigImage from "./components/BigImage/BigImage";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ function App() {
     <div>
       <Navigation isLoaded={isLoaded} />
       <Header />
+      <BigImage/>
       {isLoaded && (
         <Switch>
           <Route path="/signup">
