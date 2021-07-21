@@ -14,17 +14,17 @@ module.exports = {
      {
      locationId: 1,
      userId: 1,
-     review: faker.lorem.paragraph()
+     review: faker.lorem.paragraph(255)
      },
      {
        locationId: 1,
        userId: 1,
-       review: faker.lorem.paragraph()
+       review: faker.lorem.paragraph(255)
      },
      {
        locationId: 1,
        userId: 2,
-       review: faker.lorem.paragraph()
+       review: faker.lorem.paragraph(255)
      },
   ], {});
   },
