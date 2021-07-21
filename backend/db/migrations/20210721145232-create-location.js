@@ -23,7 +23,7 @@ module.exports = {
       },
       price: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.DECIMAL(20, 2)
       },
       state: {
         allowNull: false,
