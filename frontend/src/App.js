@@ -9,6 +9,7 @@ import { Header } from "./components/Header/Header";
 
 import Navigation from "./components/Navigation";
 import BigImage from "./components/HomePage/BigImage/BigImage";
+import LocationTiles from "./components/HomePage/LocationTiles";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       <Header isLoaded={isLoaded}/>
       <BigImage/>
+      <LocationTiles/>
       {isLoaded && (
         <Switch>
           <Route path="/signup">

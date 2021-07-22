@@ -7,5 +7,10 @@ const router = express.Router();
 router.get('/', asyncHandler( async (req,res) => {
     const loactions = await Location.findPlaces();
 
-    return loactions;
-}))
+    return res.json(
+        {
+            loactions
+        });
+}));
+
+module.exports = router;
