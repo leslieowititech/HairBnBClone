@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import LoginFormPage from "./components/LoginFormPage";
+import LoginFormPage from "./components/LoginFormModal";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 
 import { Header } from "./components/Header/Header";
 
 import Navigation from "./components/Navigation";
+import BigImage from "./components/BigImage/BigImage";
 
 function App() {
   const dispatch = useDispatch();
@@ -21,13 +22,14 @@ function App() {
   return  isLoaded && (
     <div>
       <Navigation isLoaded={isLoaded} />
-      <Header />
+      <Header isLoaded={isLoaded}/>
+      <BigImage/>
       {isLoaded && (
         <Switch>
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/signup">
+          <Route path="/">
             <LoginFormPage />
           </Route>
         </Switch>
