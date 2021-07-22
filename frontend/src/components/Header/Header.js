@@ -1,15 +1,23 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 import { NavLink } from 'react-router-dom';
+import LoginSignup from './LoginSignup';
+// import { Route, Switch } from "react-router-dom";
 
 import './Header.css';
 
 export const Header = () => {
-  const logoUrl = 'http://assets.stickpng.com/images/580b57fcd9996e24bc43c513.png';
+  const logoUrl = '/images/logo.png';
   const history = useHistory();
 
   const reddirect = () => {
     history.push('/login')
+  }
+
+  const loginSignup = () => {
+    return (
+      <LoginSignup/>
+    )
   }
 
 
@@ -34,7 +42,10 @@ export const Header = () => {
                      onClick={reddirect}
                 >
                   <div>&#9776;</div>
-                  <div className="profileIcon-div">
+                  <div className="profileIcon-div"
+                     
+                    onClick={loginSignup} 
+                     >
                     <img src="images/profileIcon.jpg" alt="profileImageIcon" className="profile-icon"/>
                   </div>
                 </button>
