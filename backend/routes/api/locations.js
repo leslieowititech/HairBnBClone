@@ -1,16 +1,15 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { Location } = require('../../db/models/location');
+const { Location } = require('../../db/models');
 
 const router = express.Router();
 
 router.get('/', asyncHandler( async (req,res) => {
-    const loactions = await Location.findPlaces();
+    const locations = await Location.findAll();
 
     return res.json(
-        {
-            loactions
-        });
+        locations
+       );
 }));
 
 module.exports = router;
