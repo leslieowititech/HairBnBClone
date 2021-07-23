@@ -30,20 +30,21 @@ const locationReducer = (state = initialState, action) => {
     let newState;
     switch(action.type) {
         case GET_LOCATION:
-            newState = {}
-            action.payload.forEach(location => {
+            {
+                newState = {}
+                action.payload.forEach(location => {
                 newState[location.id] = location
             })
             return {
                 ...state, ...newState
             }
-        // newState = Object.assign({}, state);
-        // newState.location = action.payload;
-        // return newState;
+        }
         case DELETE_LOCATION:
-            newState = Object.assign({}, state);
-            newState.location = null;
-            return newState;
+            {
+                newState = Object.assign({}, state);
+                newState.location = null;
+                return newState;
+            }
         default:
             return state;
     }
@@ -52,7 +53,6 @@ const locationReducer = (state = initialState, action) => {
 export const findPlaces = () => async dispatch => {
     const response = await csrfFetch('/api/locations')
     const data = await response.json();  
-
 
     if(response.ok){
         await dispatch(getLocation(data))
