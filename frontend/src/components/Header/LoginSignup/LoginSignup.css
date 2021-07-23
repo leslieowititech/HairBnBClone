@@ -1,0 +1,36 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.login-signup-div {
+    border: 1px solid red;
+    width: 200px;
+    height: 200px;
+    border-radius: 10%;
+    position: absolute;
+    background-color: rgb(255, 255, 250);
+    right: 60px;
+    top: 70px;
+    
+}
+
+.login-signup-demo-links {
+    display: flex;
+    flex-direction: column; 
+    border-bottom: 1px solid darkgray;
+
+}
+
+.login-signup-demo-links > li {
+    list-style: none;
+    margin-left: 10px;
+    padding: 10px;
+    
+}
+
+.login-signup-help-list-yourspot > li {
+    list-style: none;
+    margin-left: 10px;
+    padding: 10px;
+}

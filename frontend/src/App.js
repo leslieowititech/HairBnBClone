@@ -4,7 +4,8 @@ import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormModal";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
-// import * as locationActions from './store/location';
+//needs to disapper
+import LoginSignup from "./components/Header/LoginSignup";
 
 
 import { Header } from "./components/Header/Header";
@@ -25,9 +26,10 @@ function App() {
   
   return  isLoaded && (
     <div>
-      <Navigation isLoaded={isLoaded} />
       <Header isLoaded={isLoaded}/>
+      <LoginSignup/>
       <BigImage/>
+      <Navigation isLoaded={isLoaded} />
       <LocationTiles/>
       {isLoaded && (
         <Switch>
