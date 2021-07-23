@@ -4,7 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormModal";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
-import * as locationActions from './store/location';
+// import * as locationActions from './store/location';
 
 
 import { Header } from "./components/Header/Header";
@@ -19,7 +19,7 @@ function App() {
 
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
-    dispatch(locationActions.findPlaces())
+    // dispatch(locationActions.findPlaces())
   }, [dispatch]);
 
   
