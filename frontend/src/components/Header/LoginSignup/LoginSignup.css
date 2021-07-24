@@ -10,7 +10,7 @@
     border-radius: 10%;
     position: absolute;
     background-color: rgb(255, 255, 250);
-    right: 70px;
+    right: 130px;
     top: 70px;
     max-height: fit-content;
     overflow: hidden;
@@ -28,6 +28,7 @@
     list-style: none;
     padding: 10px;
     padding-left: 20px;
+    color: black;
     
 }
 
@@ -36,6 +37,7 @@
     /* margin-left: 10px; */
     padding: 10px;
     padding-left: 20px;
+    color: black;
 }
 
 .login-signup-demo-links > li:hover {
