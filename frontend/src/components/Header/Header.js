@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-// import { Route, Switch } from "react-router-dom";
+import LoginSignup from './LoginSignup';
 
 import './Header.css';
 
@@ -25,8 +25,7 @@ export const Header = ({isLoaded}) => {
               <li className="header-li">List your Spot</li>
               <li className="header-li">🌐</li>
               <li className="header-li">
-                <button 
-                     className="nav-button"                     
+                <button className="nav-button"                     
                 >
                   <div>&#9776;</div>
                   <div className="profileIcon-div">
