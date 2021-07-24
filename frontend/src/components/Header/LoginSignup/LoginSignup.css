@@ -14,6 +14,7 @@
     top: 70px;
     max-height: fit-content;
     overflow: hidden;
+  
     
 }
 
@@ -61,11 +62,20 @@
 .logout-button {
   background: none!important;
   border: none;
-  padding: 0!important;
-  /*optional*/
-  font-family: arial, sans-serif;
-  /*input has OS specific font-family*/
-  color: #069;
-  text-decoration: underline;
+  padding: 0!important; 
+  color:black;
+  text-decoration: none;
   cursor: pointer;
+  font-size: medium;
+}
+
+.demo-user-button {
+  background: none!important;
+  border: none;
+  padding: 0!important;  
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: medium;
+
 }
