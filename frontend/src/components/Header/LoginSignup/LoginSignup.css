@@ -1,0 +1,89 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.login-signup-div {
+    width: 200px;   
+    border-radius: 10%;
+    position: absolute;
+    background-color: rgb(255, 255, 250);
+    right: 130px;
+    top: 70px;
+    max-height: fit-content;
+    overflow: hidden;
+  
+    
+}
+
+.login-signup-demo-links {
+    display: flex;
+    flex-direction: column; 
+    border-bottom: 1px solid darkgray;
+
+}
+
+.login-signup-demo-links > li {
+    list-style: none;
+    padding: 10px;
+    padding-left: 20px;
+    color: black;
+    
+}
+
+.login-signup-help-list-yourspot > li {
+    list-style: none;
+    /* margin-left: 10px; */
+    padding: 10px;
+    padding-left: 20px;
+    color: black;
+}
+
+.login-signup-demo-links > li:hover {
+    background:rgba(204, 204, 175, 0.2);
+}
+
+.login-signup-help-list-yourspot > li:hover {
+    background: rgba(204, 204, 175, 0.2);
+    
+}
+
+.login-button{
+  background: none!important;
+  border: none;
+  padding: 0!important;  
+  text-decoration: none;
+  cursor: pointer;
+  font-size:medium;
+}
+
+.logout-button {
+  background: none!important;
+  border: none;
+  
+  color:black;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: medium;
+  padding-left: 20px;
+}
+
+.demo-user-button {
+  background: none!important;
+  border: none;
+  padding: 0!important;  
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  cursor: pointer;
+  font-size: medium;
+
+}
+
+.logged-in-user-info {
+    color: rgb(214, 124, 89);
+    padding: 10px;
+    padding-left: 20px;
+    font-size: medium;
+}
