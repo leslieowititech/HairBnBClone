@@ -1,16 +1,35 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import {useSelector} from 'react-redux';
-import LoginFormModal from './'
+import LoginFormModal from '../../LoginFormModal';
+import ProfileButton from '../../Navigation/ProfileButton';
 
 import './LoginSignup.css';
 
-const LoginSignup = () => {
+const LoginSignup = ({isLoaded}) => {
+    const sessionUser = useSelector(state => state.session.user);
+
+    let sessionLinks;
+    if (sessionUser) {
+        sessionLinks = (
+            <ProfileButton user={sessionUser} />
+        );
+    } else {
+        sessionLinks = (
+            <>
+                <LoginFormModal />
+                <li>
+
+                <NavLink to="/signup">Sign Up</NavLink>
+                </li>
+            </>
+        );
+    }
     return (
         <div className="login-signup-div">
             <div className='login-signup-demo-links'>
-                <li>Login</li>
-                <li>Signup</li>
+                
+                    {isLoaded && sessionLinks}
                 <li>Demo User</li>
             </div>
             <div className='login-signup-help-list-yourspot'>

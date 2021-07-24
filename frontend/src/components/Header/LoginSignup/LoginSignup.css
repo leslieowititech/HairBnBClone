@@ -5,12 +5,13 @@
 
 .login-signup-div {
     width: 200px;
-    height: 200px;
+    /* height: 200px; */
     border-radius: 10%;
     position: absolute;
     background-color: rgb(255, 255, 250);
     right: 70px;
     top: 70px;
+    max-height: fit-content;
     
 }
 
@@ -32,4 +33,16 @@
     list-style: none;
     margin-left: 10px;
     padding: 10px;
+}
+
+button {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  /*optional*/
+  font-family: arial, sans-serif;
+  /*input has OS specific font-family*/
+  color: #069;
+  text-decoration: underline;
+  cursor: pointer;
 }

@@ -10,7 +10,7 @@ import LoginSignup from "./components/Header/LoginSignup";
 
 import { Header } from "./components/Header/Header";
 
-import Navigation from "./components/Navigation";
+// import Navigation from "./components/Navigation";
 import BigImage from "./components/HomePage/BigImage/BigImage";
 import LocationTiles from "./components/HomePage/LocationTiles";
 
@@ -27,9 +27,9 @@ function App() {
   return  isLoaded && (
     <div>
       <Header isLoaded={isLoaded}/>
-      <LoginSignup/>
+      <LoginSignup isLoaded={isLoaded}/>
       <BigImage/>
-      <Navigation isLoaded={isLoaded} />
+      {/* <Navigation isLoaded={isLoaded} /> */}
       <LocationTiles/>
       {isLoaded && (
         <Switch>
