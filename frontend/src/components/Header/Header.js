@@ -1,16 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import LoginSignup from './LoginSignup';
+
 
 import './Header.css';
 
-export const Header = ({isLoaded}) => {
+export const Header = () => {
   const logoUrl = '/images/logo.png'; 
 
 
     return (
-        <div className="header">
-       
+        <div className="header">         
           <div className="logo-div">
               <NavLink exact to="/"><img src={logoUrl} alt="logo" className="logo"/></NavLink>
           </div>
