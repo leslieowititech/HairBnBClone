@@ -8,13 +8,12 @@ import './LocationTiles.css'
 const LocationTiles = () => {
     const dispatch = useDispatch();
     const locations = useSelector(state => state.location) 
-    // const images = useSelector(state => state.image)
-    // console.log(images)
+   
     const locationsArray = Object.values(locations);
         
         useEffect(() => {           
             dispatch(locationActions.findPlaces())
-            // dispatch(imageActions.findImages())
+        
         },[dispatch])
        
 
@@ -24,7 +23,7 @@ const LocationTiles = () => {
             <div className='tiles'>
             {locationsArray.map(location => (
                 <li key={location?.id}>
-                    <NavLink to={`/locations/${location.id}`}>
+                    <NavLink to={`/locations/${location.state}`}>
                         <div className='tile-image'>image</div>
                         {location?.state}
                     </NavLink>
