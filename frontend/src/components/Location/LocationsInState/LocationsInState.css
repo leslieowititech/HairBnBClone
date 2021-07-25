@@ -5,8 +5,9 @@
 
 }
 
-.hair-spot-img {
-    border: 1px solid red;
+.hair-spot-img { 
+    background-color: tomato;
+    
     width: 250px; 
     border-radius: 10%;
     height: 180px; 
