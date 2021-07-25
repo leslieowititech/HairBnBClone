@@ -9,6 +9,7 @@ import * as sessionActions from "./store/session";
 import BigImage from "./components/HomePage/BigImage/BigImage";
 import LocationTiles from "./components/HomePage/LocationTiles";
 import { Header } from "./components/Header/Header";
+import HomePage from "./components/HomePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,10 +25,13 @@ function App() {
   return  isLoaded && (
     <div>
       <Header isLoaded={isLoaded} />
-      <BigImage/>     
-      <LocationTiles/>
+      {/* <BigImage/>     
+      <LocationTiles/> */}
       {isLoaded && (
         <Switch>
+          <Route exact path='/'>
+            <HomePage/>
+          </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>

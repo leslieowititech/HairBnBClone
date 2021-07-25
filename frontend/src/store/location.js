@@ -53,11 +53,20 @@ const locationReducer = (state = initialState, action) => {
 export const findPlaces = () => async dispatch => {
     const response = await csrfFetch('/api/locations')
     const data = await response.json();  
-
+    
     if(response.ok){
         await dispatch(getLocation(data))
         return response;
     }
 }
+
+// export const findOnePlace = () => async dispatch => {
+//     const response = await csrfFetch('/api/locations/:id');
+//     const data = await response.json();
+
+//     if(response.ok){
+//         await dispatch()
+//     }
+// }
 
 export default locationReducer;
