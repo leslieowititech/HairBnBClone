@@ -22,17 +22,20 @@ const LocationsInState = () => {
     return (
         <div className='hair-spots-div'>
             <h1>Hair spots in {state}</h1>
-            <div className='hair-spot'>
-                {pageLocations.map(location => (
+           
+                {pageLocations.map(location => (                    
                     <NavLink to={`/locations/${location.id}`} key={location.id}>
-                        <div className='hair-spot-img'>image</div>
-                        <div>
-                            {location.name}
-                            {`$${location.price}`}
+                        <div className='hair-spot'>
+                            <div className='hair-spot-img'>image</div>
+                            <div>
+                                {location.name}
+                                {`$${location.price}`}
+                            </div>
                         </div>
+                    
                     </NavLink>
                 ))}
-            </div>
+            
         </div>
     )
 }
