@@ -15,7 +15,7 @@ router.get('/', asyncHandler( async (req,res) => {
        );
 }));
 
-router.get(':id', asyncHandler( async (req, res) => {
+router.get('/:id', asyncHandler( async (req, res) => {
     const {id } = req.body;
     const location = await Location.findOne({ where: { id: id} })
 
@@ -23,5 +23,9 @@ router.get(':id', asyncHandler( async (req, res) => {
         location
     )
 }))
+
+// router.get('/state', asyncHandler(async (req,res) => {
+//     console.log(req.body)
+// }))
 
 module.exports = router;

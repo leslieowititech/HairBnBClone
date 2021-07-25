@@ -1,0 +1,24 @@
+.hair-spots-div {
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column; 
+
+}
+
+.hair-spot-img {
+    border: 1px solid red;
+    width: 250px; 
+    border-radius: 10%;
+    height: 180px;  
+}
+
+.hair-spot > a {
+    margin-left: 40px;
+    display: flex;
+    align-items: center;
+    
+}
+
+.hair-spot {
+    padding-top: 40px;
+}
