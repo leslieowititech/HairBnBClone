@@ -12,4 +12,13 @@ router.get('/', asyncHandler( async (req,res) => {
        );
 }));
 
+router.get(':id', asyncHandler( async (req, res) => {
+    const {id } = req.body;
+    const location = await Location.findOne({ where: { id: id} })
+
+    return res.json(
+        location
+    )
+}))
+
 module.exports = router;

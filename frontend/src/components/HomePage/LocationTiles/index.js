@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import * as locationActions from '../../../store/location';
 // import * as imageActions from '../../../store/image';
@@ -23,8 +24,10 @@ const LocationTiles = () => {
             <div className='tiles'>
             {locationsArray.map(location => (
                 <li key={location?.id}>
-                    <div className='tile-image'>image</div>
-                    {location?.state}
+                    <NavLink to={`/locations/${location.id}`}>
+                        <div className='tile-image'>image</div>
+                        {location?.state}
+                    </NavLink>
                 </li>
             ))}
             </div>
