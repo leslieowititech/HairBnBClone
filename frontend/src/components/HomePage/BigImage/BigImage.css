@@ -1,3 +1,8 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
 .big-image-div {
     
     /* border: 1px solid red; */
@@ -8,4 +13,15 @@
 
 .big-image {
     max-width: 100%;     
+}
+
+.big-image-h1-div {
+    /* border: 1px solid red; */
+    position: absolute;
+    top: 200px;
+    max-width: 40%;
+}
+
+.big-image-h1 {
+    color: white;
 }
