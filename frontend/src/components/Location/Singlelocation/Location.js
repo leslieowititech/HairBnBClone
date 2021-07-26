@@ -20,7 +20,7 @@ const SingleLocation = () => {
             <h1>{l.address}</h1>
             <div className='single-location-image-gallery'></div>
             {data.map(l => (
-                <div key={l.id}>
+                <div key={l.id} className='single-location-details'>
                     {l.name}
                     {l.price}
                 </div>
