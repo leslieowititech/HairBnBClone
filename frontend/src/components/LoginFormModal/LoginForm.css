@@ -1,38 +1,47 @@
-* {
+*{
     padding: 0px;
     margin: 0px;
+    border: none;
 }
 
-.signup-form {
+.log-in-form {
     height: 400px;
     width: 400px;
     display: flex;
     flex-direction: column;  
     justify-content: center;  
     /* border: 1px solid red; */
-    padding: 15px;    
-    margin: auto;
-    width: 50%;
-    position: relative;
-    top: 90px;
-    box-shadow: 0px 5px 5px rgba(43, 41, 20, 0.2);
+    padding: 15px;
     
-
 }
 
-.signup-form-input {
+.log-in-form-input {
     border-radius: 3%;
     height: 50px;
     border: 1px solid lightgray;  
     margin-bottom: 15px; 
     padding-left: 10px; 
+  
+    
 }
 
-.signup-form-button {
+.log-in-form-button{
     background-color: tomato;
     border: none;
     height: 50px;
     border-radius: 3%;
     padding: 15px;
     color: white;
+
+}
+
+.log-in-form-h1 {
+    font-weight:normal;
+    /* border: 1px solid red; */
+    width: 300px;
+    height: 40px;
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: 15px; 
+    font-size:larger;
 }

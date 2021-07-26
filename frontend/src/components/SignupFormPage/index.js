@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 
+import './SignupForm.css'
+
 function SignupFormPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
@@ -29,48 +31,55 @@ function SignupFormPage() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    
+
+    <form onSubmit={handleSubmit} className='signup-form'>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-      </ul>
-      <label>
-        Email
+      </ul>    
+        <h1 className='log-in-form-h1'>Welcome to hairbnb</h1>
         <input
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
+          placeholder='Email'
+          className='signup-form-input'
         />
-      </label>
-      <label>
-        Username
+      
+      
         <input
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
+          placeholder='Username'
+          className='signup-form-input'
         />
-      </label>
-      <label>
-        Password
+      
+      
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+          placeholder='Password'
+          className='signup-form-input'
         />
-      </label>
-      <label>
-        Confirm Password
+      
+      
         <input
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
+          placeholder='confirm password'
+          className='signup-form-input'
         />
-      </label>
-      <button type="submit">Sign Up</button>
+      
+      <button type="submit" className='signup-form-button'>Sign Up</button>
     </form>
+    
   );
 }
 
