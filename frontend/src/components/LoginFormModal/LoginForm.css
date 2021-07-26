@@ -1,0 +1,45 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    border: none;
+}
+
+.log-in-form {
+    height: 400px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;  
+    justify-content: center;  
+    border: 1px solid red;
+    padding: 15px;
+    
+}
+
+.log-in-form-input {
+    border-radius: 3%;
+    height: 50px;
+    border: 1px solid lightgray;
+    width: 100%;
+    margin-bottom: 15px;    
+    
+}
+
+.log-in-form-button{
+    background-color: tomato;
+    border: none;
+    height: 50px;
+    border-radius: 3%;
+    padding: 15px;
+
+}
+
+.log-in-form-h1 {
+    font-weight:normal;
+    /* border: 1px solid red; */
+    width: 300px;
+    height: 40px;
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: 15px; 
+    font-size:larger;
+}
