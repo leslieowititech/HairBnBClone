@@ -66,7 +66,7 @@ export const findPlacesByState = () => async dispatch => {
 
     if(response.ok){
         await dispatch(getLocation(data))
-        return response
+        return response;
     }
 
 }
@@ -77,7 +77,7 @@ export const findOnePlace = () => async dispatch => {
 
     if(response.ok){
         await dispatch(getLocation(data))
-        return response
+        return response;
     }
 }
 
