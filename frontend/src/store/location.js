@@ -60,13 +60,25 @@ export const findPlaces = () => async dispatch => {
     }
 }
 
-// export const findOnePlace = () => async dispatch => {
-//     const response = await csrfFetch('/api/locations/:id');
-//     const data = await response.json();
+export const findPlacesByState = () => async dispatch => {
+    const response = await csrfFetch('/api/locations/:state');
+    const data = await response.json();
 
-//     if(response.ok){
-//         await dispatch()
-//     }
-// }
+    if(response.ok){
+        await dispatch(getLocation(data))
+        return response
+    }
+
+}
+
+export const findOnePlace = () => async dispatch => {
+    const response = await csrfFetch('/api/locations/:state/:id');
+    const data = await response.json();
+
+    if(response.ok){
+        await dispatch(getLocation(data))
+        return response
+    }
+}
 
 export default locationReducer;

@@ -5,11 +5,12 @@ import * as locationActions from '../../../store/location'
 
 const SingleLocation = () => {
     const dispatch = useDispatch();
-    const location = useSelector(state => console.log(state))
+    const location = useSelector(state => state.location);
 
-    // useEffect(() => {
-    //     dispatch(location.findOnePlace())
-    // },[dispatch])
+    console.log(location, 'testtest123')
+    useEffect(() => {
+        dispatch(locationActions.findOnePlace())
+    },[dispatch])
     return (
         <div>
             <h1>Hello from single state</h1>
