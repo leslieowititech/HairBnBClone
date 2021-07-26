@@ -11,12 +11,12 @@ const LocationsInState = () => {
     const locations = useSelector(state => state.location);
     const locationsArray = Object.values(locations);
 
-    const {state }= useParams();
-    const pageLocations = locationsArray.filter(location => location.state === state);
-    console.log(pageLocations, 'testing')
+    const { state }= useParams();
+    const pageLocations = locationsArray
+   
   
     useEffect(() => {
-        dispatch(locationActions.findPlaces())
+        dispatch(locationActions.findPlacesByState())      
     }, [dispatch])
 
     return (
@@ -24,7 +24,7 @@ const LocationsInState = () => {
             <h1>Hair spots in {state}</h1>
            
                 {pageLocations.map(location => (                    
-                    <NavLink to={`/locations/${location.id}`} key={location.id}>
+                    <NavLink to={`/locations/${state}/${location.id}`} key={location.id}>
                         <div className='hair-spot'>
                             <div className='hair-spot-img'>image</div>
                             <div>

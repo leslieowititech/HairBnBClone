@@ -9,6 +9,7 @@ import * as sessionActions from "./store/session";
 import { Header } from "./components/Header/Header";
 import HomePage from "./components/HomePage";
 import LocationsInState from "./components/Location/LocationsInState";
+import SingleLocation from "./components/Location/Singlelocation/Location";
 
 function App() {
   const dispatch = useDispatch();
@@ -29,9 +30,13 @@ function App() {
           <Route exact path='/'>
             <HomePage/>
           </Route>
+          <Route path='/locations/:state/:id'>
+            <SingleLocation />
+          </Route>
           <Route path='/locations/:state'>
               <LocationsInState/>   
           </Route>
+          
           <Route path="/signup">
             <SignupFormPage />
           </Route>
