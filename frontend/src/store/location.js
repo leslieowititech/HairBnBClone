@@ -3,6 +3,14 @@ import { csrfFetch } from './csrf';
 const GET_LOCATION = 'location/getLocation';
 const DELETE_LOCATION = 'location/deleteLocation';
 const UPDATE_LOCATION = 'location/updateLoaction';
+const CREATE_LOCATION = 'location/cretaeLocation';
+
+const cretaeLocation = (location) => {
+    return {
+        type: CREATE_LOCATION,
+        payload: location
+    }
+}
 
 const getLocation = (location) => {
     return {
@@ -45,8 +53,24 @@ const locationReducer = (state = initialState, action) => {
                 newState.location = null;
                 return newState;
             }
+        case CREATE_LOCATION:
+            {
+                newState = Object.assign({}, state);
+                newState.location = action.payload;
+                return newState;
+            }
         default:
             return state;
+    }
+}
+
+export const createAPlace = () => async dispatch => {
+    const response = await csrfFetch('/api/locations/new')
+    const data = await response.json();
+
+    if (response.ok) {
+        await dispatch(getLocation(data))
+        return response;
     }
 }
 

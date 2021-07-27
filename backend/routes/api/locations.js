@@ -59,4 +59,13 @@ router.get('/:state', asyncHandler(async (req,res) => {//state matching
     )
 }))
 
+router.post('/new', asyncHandler(async (req, res) => {
+    const {} = req.body;
+    const location = Location.create({})
+
+    return res.json(
+        location
+    )
+}))
+
 module.exports = router;

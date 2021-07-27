@@ -11,7 +11,7 @@ const LocationsInState = () => {
     const locations = useSelector(state => state.location);
     const locationsArray = Object.values(locations);
     const user = useSelector(state => state.session.user);
-    console.log(user.id, 'userid')
+    // console.log(user.id, 'userid')
 
     const renderEditDelete = () => {
         return (
