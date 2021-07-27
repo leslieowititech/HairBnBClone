@@ -1,11 +1,13 @@
 import React, {useEffect} from 'react';
 import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
+// import { useHistory } from 'react-router';
 import * as locationActions from '../../../store/location';
-// import * as imageActions from '../../../store/image';
+
 import './LocationTiles.css'
 
 const LocationTiles = () => {
+    // const history = useHistory()
     const dispatch = useDispatch();
     const locations = useSelector(state => state.location) 
    

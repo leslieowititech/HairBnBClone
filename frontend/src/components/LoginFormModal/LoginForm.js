@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
+// import { useSelector } from "react-redux";
 
 import './LoginForm.css'
 
@@ -21,6 +22,8 @@ function LoginForm() {
             }
         );
     };
+
+    // useSelector(state => console.log(state.session.user))
 
     return (
         <form onSubmit={handleSubmit} className='log-in-form'>

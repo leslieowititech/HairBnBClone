@@ -10,6 +10,18 @@ const LocationsInState = () => {
     const dispatch = useDispatch();
     const locations = useSelector(state => state.location);
     const locationsArray = Object.values(locations);
+    const user = useSelector(state => state.session.user);
+    console.log(user.id, 'userid')
+
+    const renderEditDelete = () => {
+        return (
+            <>
+                <button>Edit</button>
+                <button>Delete</button>
+            </>
+        )
+    }
+    
 
     const { state }= useParams();
     const pageLocations = locationsArray
@@ -29,8 +41,11 @@ const LocationsInState = () => {
                             <div className='hair-spot-img'>image</div>
                             <div>
                                 {location.name}
-                                {`$${location.price}`}
-                            </div>
+                                {`$${location.price} `}
+                               
+                                {location.userId === user.id ? renderEditDelete() : null}
+                            </div>                       
+                       
                         </div>
                     
                     </NavLink>
