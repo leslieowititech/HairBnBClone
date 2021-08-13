@@ -5,7 +5,9 @@ const router = express.Router();
 const apiRouter = require('./api');
 
 router.use('/api', apiRouter);
-
+router.get('/banana', (req, res) => {
+  res.json('Hello world test')
+})
 // Add a XSRF-TOKEN cookie in development
 if (process.env.NODE_ENV !== 'production') {
   router.get('/api/csrf/restore', (req, res) => {

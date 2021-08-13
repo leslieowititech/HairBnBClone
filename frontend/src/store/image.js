@@ -42,7 +42,7 @@ const imageReducer = (state = initialState, action) => {
 export const findImages = () => async dispatch => {
     const response = await csrfFetch('/api/images');
     const data = await response.json();
-    console.log(data, 'testing')
+    // console.log(data, 'tested')
     
     if (response.ok){
         await dispatch(getImage(data))
