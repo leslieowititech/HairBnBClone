@@ -54,7 +54,7 @@ const LocationTiles = () => {
             <div className='tiles'>                
                 {locationsWithimages.map(location => (
                 <li key={location?.id}>                 
-                    <Link to={`/locations/${location.state}`}>
+                        <Link to={`/locations/${location.state}`}>
                         <div className='tile-image'>
                                 <img src={location.image.url} alt='image' className='tile-image-pic'/>
                         </div>
