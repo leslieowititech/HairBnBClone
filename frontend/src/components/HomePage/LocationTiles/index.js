@@ -15,25 +15,35 @@ const LocationTiles = () => {
     
     const locationsArray = Object.values(locations);
     const imagesArray = images.image;
-    // console.log(imagesArray[0])
-    // const locationswithImages = [];    
-        
-        useEffect(() => {           
-            dispatch(locationActions.findPlaces())
-            dispatch(imageActions.findImages())
 
-            for (let i = 0; i < locationsArray.length; i++) {//pair a location with an image
-                let location = locationsArray[i];
-                for (let j = 0; j < imagesArray.length; j++) {
-                    let image = imagesArray[j];
+   
+    
+    
+    const getlocation = () => {
+        let locations = []
 
-                    if (image.locationId === location.id) {
-                        console.log(location.id, image.locationId, 'mathes?')
+        for (let i = 0; i < locationsArray.length; i++) {//pair a location with an image
+            let location = locationsArray[i];
+            for (let j = 0; j < imagesArray?.length; j++) {
+                let image = imagesArray[j];
+
+                if (image.locationId === location.id) {                 
+                    
+                    if(!locations.includes(location)){
                         location.image = image
-                        // locationswithImages.push({location, image})
+                        locations.push(location)
                     }
                 }
             }
+        }
+        return locations;
+    }
+
+    const locationsWithimages = getlocation();
+        
+        useEffect(() => {           
+            dispatch(locationActions.findPlaces())
+            dispatch(imageActions.findImages())           
         
         },[dispatch])
        
@@ -41,12 +51,12 @@ const LocationTiles = () => {
     return (
         <div className='tile-div'>
             <h1>Explore nearby</h1>
-            <div className='tiles'>
-                {locationsArray.map(location => (
-                <li key={location?.id}>
+            <div className='tiles'>                
+                {locationsWithimages.map(location => (
+                <li key={location?.id}>                 
                     <NavLink to={`/locations/${location.state}`}>
                         <div className='tile-image'>
-                            <img src={console.log(location.image, 'images')}/>
+                                <img src={location.image.url} alt='image' className='tile-image-pic'/>
                         </div>
                         {location?.state}
                     </NavLink>
