@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 // import { useHistory } from 'react-router';
 import * as locationActions from '../../../store/location';
@@ -54,12 +54,12 @@ const LocationTiles = () => {
             <div className='tiles'>                
                 {locationsWithimages.map(location => (
                 <li key={location?.id}>                 
-                    <NavLink to={`/locations/${location.state}`}>
+                    <Link to={`/locations/${location.state}`}>
                         <div className='tile-image'>
                                 <img src={location.image.url} alt='image' className='tile-image-pic'/>
                         </div>
                         {location?.state}
-                    </NavLink>
+                    </Link>
                 </li>
             ))}
             </div>
