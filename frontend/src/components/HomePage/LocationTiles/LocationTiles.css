@@ -22,14 +22,16 @@
     border-radius: 20%;
     padding: 15px;
     margin: 15px;
-    background-image: ;
+    overflow: hidden;
 
 }
 
 .tile-image-pic{
-    width: 100%;
-    max-height: 100%;
+    width: auto;
+    height: 100%;
     display: block;
+    box-sizing: border-box;
+    mask-repeat: no-repeat;
 }
 
 .tiles > li > a {    
