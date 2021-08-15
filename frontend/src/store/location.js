@@ -84,10 +84,11 @@ export const findPlaces = () => async dispatch => {
     }
 }
 
-export const findPlacesByState = () => async dispatch => {
-    const response = await csrfFetch('/api/locations/:state');
+export const findPlacesByState = (state) => async dispatch => {
+    // console.log(state, 'statehere')
+    const response = await csrfFetch(`/api/locations/${state}`);
     const data = await response.json();
-
+    console.log(data,'dataHere')
     if(response.ok){
         await dispatch(getLocation(data))
         return response;
@@ -95,10 +96,10 @@ export const findPlacesByState = () => async dispatch => {
 
 }
 
-export const findOnePlace = () => async dispatch => {
-    const response = await csrfFetch('/api/locations/:state/:id');
+export const findOnePlace = (state,id) => async dispatch => {
+    const response = await csrfFetch(`/api/locations/${state}/${id}`);
     const data = await response.json();
-
+    console.log(data)
     if(response.ok){
         await dispatch(getLocation(data))
         return response;

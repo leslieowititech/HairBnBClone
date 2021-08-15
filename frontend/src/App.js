@@ -30,11 +30,11 @@ function App() {
           <Route exact path='/'>
             <HomePage/>
           </Route>
-          <Route path='/locations/:state/:id'>
-            <SingleLocation />
+          <Route exact path='/locations/:state/:id'>
+            <SingleLocation isLoaded={isLoaded}/>
           </Route>
-          <Route path='/locations/:state'>
-              <LocationsInState/>   
+          <Route exact path='/locations/:state'>
+            <LocationsInState isLoaded={isLoaded}/>
           </Route>
           
           <Route path="/signup">

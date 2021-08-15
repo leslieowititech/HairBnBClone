@@ -1,29 +1,37 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
-// import { useHistory } from 'react-router';
+import { useHistory } from 'react-router';
 import * as locationActions from '../../../store/location';
 import * as imageActions from '../../../store/image';
 
 import './LocationTiles.css'
 
 const LocationTiles = () => {
-    // const history = useHistory()
+    const history = useHistory()
     const dispatch = useDispatch();
     const locations = useSelector(state => state.location)
-    const images = useSelector(state => state.image)     
+    const images = useSelector(state => state.image);
+   
     
     const locationsArray = Object.values(locations);
     const imagesArray = images.image;
 
    
-    
+    // const redirectToSatePage = (location) => {
+    //     return history.push(`/locations/${location.state}`)
+    // }
+    const demoLocations = []
     
     const getlocation = () => {
         let locations = []
 
         for (let i = 0; i < locationsArray.length; i++) {//pair a location with an image
             let location = locationsArray[i];
+
+            if(location.userId === 4){
+                demoLocations.unshift(location)
+            }
             for (let j = 0; j < imagesArray?.length; j++) {
                 let image = imagesArray[j];
 
@@ -52,9 +60,11 @@ const LocationTiles = () => {
         <div className='tile-div'>
             <h1>Explore nearby</h1>
             <div className='tiles'>                
-                {locationsWithimages.map(location => (
+                {demoLocations.map(location => (
                 <li key={location?.id}>                 
-                        <Link to={`/locations/${location.state}`}>
+                        <Link to={`/locations/${location.state}`}> 
+                    {/* <Link to={(e) => setPath(e.target)}> */}
+
                         <div className='tile-image'>
                                 <img src={location.image.url} alt='image' className='tile-image-pic'/>
                         </div>
