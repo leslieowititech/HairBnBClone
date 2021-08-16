@@ -64,7 +64,7 @@ const LocationsInState = ({isLoaded}) => {
             <h1>Hair spots in {state}</h1>
            
             {locationsWithimages.map(location => (
-                    <Link to={`/locations/${state}`} key={location?.id}>
+                    <Link to={`/locations/${state}/${location.id}`} key={location?.id}>
                         <div className='hair-spot'>
                             <div className='hair-spot-img'>
                             <img src={location.image.url} alt={location.image.url} className='tile-image-pic'/>
