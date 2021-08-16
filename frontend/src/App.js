@@ -10,6 +10,7 @@ import { Header } from "./components/Header/Header";
 import HomePage from "./components/HomePage";
 import LocationsInState from "./components/Location/LocationsInState";
 import SingleLocation from "./components/Location/Singlelocation/Location";
+import AllLocations from "./components/Location/AllLocations";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,8 +31,11 @@ function App() {
           <Route exact path='/'>
             <HomePage/>
           </Route>
+          <Route path='/locations'>
+            <AllLocations/>
+          </Route>
           <Route exact path='/locations/:state/:id'>
-            <SingleLocation isLoaded={isLoaded}/>
+            <SingleLocation />
           </Route>
           <Route exact path='/locations/:state'>
             <LocationsInState isLoaded={isLoaded}/>
