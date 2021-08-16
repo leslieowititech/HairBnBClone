@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 // import { useHistory } from 'react-router';
@@ -11,19 +11,25 @@ const LocationTiles = () => {
     // const history = useHistory()
     const dispatch = useDispatch();
     const locations = useSelector(state => state.location)
-    const images = useSelector(state => state.image)     
+    const images = useSelector(state => state.image);
+   
     
     const locationsArray = Object.values(locations);
     const imagesArray = images.image;
 
    
-    
+    // const redirectToSatePage = (location) => {
+    //     return history.push(`/locations/${location.state}`)
+    // }
+   
     
     const getlocation = () => {
         let locations = []
 
         for (let i = 0; i < locationsArray.length; i++) {//pair a location with an image
             let location = locationsArray[i];
+
+            
             for (let j = 0; j < imagesArray?.length; j++) {
                 let image = imagesArray[j];
 
@@ -54,7 +60,9 @@ const LocationTiles = () => {
             <div className='tiles'>                
                 {locationsWithimages.map(location => (
                 <li key={location?.id}>                 
-                        <Link to={`/locations/${location.state}`}>
+                        <Link to={`/locations/${location.state}`}> 
+                    {/* <Link to={(e) => setPath(e.target)}> */}
+
                         <div className='tile-image'>
                                 <img src={location.image.url} alt='image' className='tile-image-pic'/>
                         </div>

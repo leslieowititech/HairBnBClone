@@ -16,8 +16,8 @@
 }
 
 .tile-image {
-    height: 95px;
-    width: 95px;
+    height: 105px;
+    width: 105px;
     background-color: tomato;
     border-radius: 20%;
     /* padding: 15px; */

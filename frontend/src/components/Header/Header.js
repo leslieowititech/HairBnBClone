@@ -7,7 +7,8 @@ import LoginSignup from './LoginSignup';
 import './Header.css';
 
 export const Header = ({isLoaded}) => {
-  const logoUrl = '/images/logo.png'; 
+  const logoUrl = '/images/logo.png';
+  const progileIconUrl = 'images/profileIcon.jpg'
   const [isClicked, setClicked] = useState(false);
   
     return (
@@ -19,7 +20,7 @@ export const Header = ({isLoaded}) => {
           </div>
           <div className="middle-nav-div">
             <nav className="middle-nav">
-              <li className="header-li">Hair Spots</li>
+            <li className="header-li"><NavLink to='/locations'>Hair Spots</NavLink></li>
               <li className="header-li">Experiences</li>
             </nav>
           </div>       
@@ -35,7 +36,7 @@ export const Header = ({isLoaded}) => {
                 >
                   <div>&#9776;</div>
                   <div className="profileIcon-div">
-                    <img src="images/profileIcon.jpg" alt="profileImageIcon" className="profile-icon"/>
+                    <img src={progileIconUrl} alt="profileImageIcon" className="profile-icon"/>
                   </div>
                 </button>
                </li>

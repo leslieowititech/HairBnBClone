@@ -1,6 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { Location } = require('../../db/models');
+
 // const {Image} = require('../../db/models')
 
 const router = express.Router();
@@ -16,22 +17,28 @@ router.get('/', asyncHandler( async (req,res) => {
 }));
 
 router.get('/:state/:id', asyncHandler( async (req, res) => {//id matching
-    
     // console.log(req.rawHeaders[15])
-    const url = req.rawHeaders[15]
-    const id = Number(url[url.length-1])
-    console.log(id)
-    // console.log('testing4231')
-    const location = await Location.findOne({ where: { id: id} })
-
-    return res.json(
-         [location]
-    )
+    // const id = req.params()
+    // console.log('hello',req,'bye')
+    // const url = req.rawHeaders[15]
+    // const id = Number(url[url.length-1])
+    // // console.log(id, 'id here')
+    // // console.log('testing4231')
+    // const location = await Location.findOne({ where: { id: id} })
+    
+    // return res.json(
+    //      [location]
+    // )
+    // return req
 }))
 
 router.get('/:state', asyncHandler(async (req,res) => {//state matching
+    // res.send(req.params
+    console.log(req.params)
+    // console.log(req)
+    // console.log(await Location)
     const data = req.rawHeaders[17];
-    // console.log('herere')
+   
     let myState = []  
     for(let i = data.length-1 ; i > 0 ; i--){
         let char = data[i];        
@@ -48,6 +55,8 @@ router.get('/:state', asyncHandler(async (req,res) => {//state matching
         }
     }
     const state = myState.slice(1).join('')
+    // req.params.state = state
+    // console.log(req.params, 'params2')
     // console.log(state)
     const locations = await Location.findAll({
         where: {state: state}

@@ -1,21 +1,18 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 
 import * as locationActions from '../../../store/location';
 import * as imageActions from '../../../store/image';
-import * as sessionActions from '../../../store/session';
-import './LocationsInState.css';
 
-const LocationsInState = ({isLoaded}) => {
+const AllLocations = () => {
     const dispatch = useDispatch();
     const locations = useSelector(state => state.location);
     const images = useSelector(state => state.image)
     const locationsArray = Object.values(locations);
     const imagesArray = images.image;
     const user = useSelector(state => state.session.user);
-    // console.log(user.id, 'userid')
+    console.log(images, 'images')
 
     const renderEditDelete = () => {
         return (
@@ -25,10 +22,6 @@ const LocationsInState = ({isLoaded}) => {
             </div>
         )
     }
-    
-
-    const { state }= useParams();
-    
 
     const getlocation = () => {
         let locations = []
@@ -51,37 +44,31 @@ const LocationsInState = ({isLoaded}) => {
     }
 
     const locationsWithimages = getlocation();
-   
-  
+
+
     useEffect(() => {
-        dispatch(locationActions.findPlacesByState())  
-        dispatch(imageActions.findImages()) 
-        dispatch(sessionActions.restoreUser())   
-    }, [dispatch])
+        dispatch(locationActions.findPlaces())
+        dispatch(imageActions.findImages())
+    },[dispatch])
 
     return (
         <div className='hair-spots-div'>
-            <h1>Hair spots in {state}</h1>
-           
             {locationsWithimages.map(location => (
-                    <Link to={`/locations/${state}`} key={location?.id}>
-                        <div className='hair-spot'>
-                            <div className='hair-spot-img'>
-                            <img src={location.image.url} alt={location.image.url} className='tile-image-pic'/>
-                            </div>
-                            <div>
-                                {location.name}
-                                {`$${location.price} `}
-                                {location.userId === user?.id ? renderEditDelete() : null}
-                            </div>                       
-                       
+                <Link to={`/locations/${location.state}/${location.id}`} key={location.id}>
+                    <div className='hair-spot'>
+                        <div className='hair-spot-img'>
+                            <img src={location.image.url} alt={location.image.url} className='tile-image-pic' />
                         </div>
-                    
-                    </Link>
-                ))}
-            
+                        <div>
+                            {location.name}
+                            {`$${location.price} `}
+                            {location.userId === user?.id ? renderEditDelete() : null}
+                        </div>
+                    </div>
+                </Link>
+            ))}
         </div>
     )
 }
 
-export default LocationsInState
+export default AllLocations
