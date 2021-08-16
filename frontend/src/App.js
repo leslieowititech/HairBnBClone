@@ -31,7 +31,7 @@ function App() {
           <Route exact path='/'>
             <HomePage/>
           </Route>
-          <Route path='/locations'>
+          <Route exact path='/locations'>
             <AllLocations/>
           </Route>
           <Route exact path='/locations/:state/:id'>
