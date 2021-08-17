@@ -34,10 +34,10 @@ function App() {
           <Route exact path='/locations'>
             <AllLocations/>
           </Route>
-          <Route exact path='/locations/:state/:id'>
+          <Route exact path='/locations/:stateName/:id'>
             <SingleLocation />
           </Route>
-          <Route exact path='/locations/:state'>
+          <Route exact path='/locations/:stateName'>
             <LocationsInState isLoaded={isLoaded}/>
           </Route>
           

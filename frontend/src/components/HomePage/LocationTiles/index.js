@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
+
 // import { useHistory } from 'react-router';
 import * as locationActions from '../../../store/location';
 import * as imageActions from '../../../store/image';
@@ -12,6 +13,7 @@ const LocationTiles = () => {
     const dispatch = useDispatch();
     const locations = useSelector(state => state.location)
     const images = useSelector(state => state.image);
+    const {stateName} = useParams();//this is the State as in Nebraska etc
    
     
     const locationsArray = Object.values(locations);

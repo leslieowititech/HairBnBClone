@@ -38,7 +38,8 @@ const locationReducer = (state = initialState, action) => {
     let newState;
     switch(action.type) {
         case GET_LOCATION:
-            {
+            console.log(action.payload, 'payload')
+            
                 newState = {}
                 action.payload.forEach(location => {
                 newState[location.id] = location
@@ -46,19 +47,19 @@ const locationReducer = (state = initialState, action) => {
             return {
                 ...state, ...newState
             }
-        }
+       
         case DELETE_LOCATION:
-            {
+            
                 newState = Object.assign({}, state);
                 newState.location = null;
                 return newState;
-            }
+            
         case CREATE_LOCATION:
-            {
+            
                 newState = Object.assign({}, state);
                 newState.location = action.payload;
                 return newState;
-            }
+            
         default:
             return state;
     }
@@ -85,10 +86,10 @@ export const findPlaces = () => async dispatch => {
 }
 
 export const findPlacesByState = (state) => async dispatch => {
-    // console.log(state, 'statehere')
+    
     const response = await csrfFetch(`/api/locations/${state}`);
     const data = await response.json();
-    console.log(data,'dataHere')
+    
     if(response.ok){
         await dispatch(getLocation(data))
         return response;
@@ -99,7 +100,7 @@ export const findPlacesByState = (state) => async dispatch => {
 export const findOnePlace = (state,id) => async dispatch => {
     const response = await csrfFetch(`/api/locations/${state}/${id}`);
     const data = await response.json();
-    console.log(data)
+    console.log(data,state,id, 'data')
     if(response.ok){
         await dispatch(getLocation(data))
         return response;
