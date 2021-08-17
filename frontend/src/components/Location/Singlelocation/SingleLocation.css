@@ -70,3 +70,7 @@
 .single-location-details {
     margin-left: 40px;
 }
+
+.single-image-pic{
+    min-width: 100%; 
+}

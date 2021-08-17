@@ -59,7 +59,7 @@ const SingleLocation = () => {
             ))}
             <div className='single-location-image-gallery'>
                 {locationsWithimages.map(location => (
-                    <img src={location.image.url} alt={location.image.url} className='tile-image-pic'/>
+                    <img src={location.image.url} alt={location.image.url} className='single-image-pic'/>
 
                 ))}
             </div>
