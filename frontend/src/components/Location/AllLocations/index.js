@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import * as locationActions from '../../../store/location';
 import * as imageActions from '../../../store/image';
+import './AllLocations.css';
 
 const AllLocations = () => {
     const dispatch = useDispatch();

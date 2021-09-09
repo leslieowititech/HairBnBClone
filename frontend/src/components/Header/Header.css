@@ -45,6 +45,8 @@
 
 .header-li {
     margin: 8px;
+    font-size: medium;
+    font-size: 1.5vw;
 }
 
 .nav-button {
