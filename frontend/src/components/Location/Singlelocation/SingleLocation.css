@@ -6,6 +6,7 @@
 .single-location-div{    
     padding-top: 80px;
     /* border: 1px solid red; */
+    
 }
 
 .single-location-image-gallery {
@@ -14,7 +15,8 @@
     margin: 45px;
     border-radius: 2%;
     background-color: tomato;
-    margin-left: 40px;    
+    margin-left: 40px;   
+    overflow: hidden; 
 
 }
 
@@ -67,4 +69,8 @@
 
 .single-location-details {
     margin-left: 40px;
+}
+
+.single-image-pic{
+    min-width: 100%; 
 }

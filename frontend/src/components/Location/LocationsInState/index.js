@@ -9,10 +9,14 @@ import * as sessionActions from '../../../store/session';
 import './LocationsInState.css';
 
 const LocationsInState = ({isLoaded}) => {
+    const { stateName }= useParams();
     const dispatch = useDispatch();
+
     const locations = useSelector(state => state.location);
     const images = useSelector(state => state.image)
-    const locationsArray = Object.values(locations);
+    const locationsArray = Object.values(locations).filter(location => {
+        return location.state === stateName
+    })
     const imagesArray = images.image;
     const user = useSelector(state => state.session.user);
     // console.log(user.id, 'userid')
@@ -27,7 +31,8 @@ const LocationsInState = ({isLoaded}) => {
     }
     
 
-    const { state }= useParams();
+
+    
     
 
     const getlocation = () => {
@@ -54,17 +59,17 @@ const LocationsInState = ({isLoaded}) => {
    
   
     useEffect(() => {
-        dispatch(locationActions.findPlacesByState())  
+        dispatch(locationActions.findPlacesByState(stateName))  
         dispatch(imageActions.findImages()) 
         dispatch(sessionActions.restoreUser())   
     }, [dispatch])
 
     return (
         <div className='hair-spots-div'>
-            <h1>Hair spots in {state}</h1>
+            <h1>Hair spots in {stateName}</h1>
            
             {locationsWithimages.map(location => (
-                    <Link to={`/locations/${state}/${location.id}`} key={location?.id}>
+                    <Link to={`/locations/${stateName}/${location.id}`} key={location?.id}>
                         <div className='hair-spot'>
                             <div className='hair-spot-img'>
                             <img src={location.image.url} alt={location.image.url} className='tile-image-pic'/>

@@ -8,7 +8,7 @@ import './Header.css';
 
 export const Header = ({isLoaded}) => {
   const logoUrl = '/images/logo.png';
-  const progileIconUrl = 'images/profileIcon.jpg'
+  const progileIconUrl = '/images/profileIcon.jpg'
   const [isClicked, setClicked] = useState(false);
   
     return (
