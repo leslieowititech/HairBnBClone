@@ -16,7 +16,7 @@ const LoginSignup = ({isLoaded}) => {
     const [errors, setErrors] = useState([]);
 
    const payloadForDemo= {
-       credential: "demo@mail.com",
+       credential: "demo@user.io",
        password: 'password'
    }
     const logDemoIn = () => {   
