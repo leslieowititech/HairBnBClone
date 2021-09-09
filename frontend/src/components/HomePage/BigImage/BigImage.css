@@ -26,5 +26,9 @@
     color: white;
     font-size: 30px;
     font-size: 3vw;
+    position: relative;
+    top: 0px;
+    /* border: 1px solid blue; */
+
     
 }
