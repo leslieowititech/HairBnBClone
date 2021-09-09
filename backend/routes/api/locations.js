@@ -26,6 +26,9 @@ router.get('/:state/:id', asyncHandler( async (req, res) => {//id matching
     // return req
 }))
 
+router.put('/:state/;id')
+router.delete('/:state/:id')
+
 router.get('/:state', asyncHandler(async (req,res) => {//state matching
    
     const {state} = req.params
