@@ -11,14 +11,17 @@ import './LoginSignup.css';
 const LoginSignup = ({isLoaded}) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const [credential, setCredential] = useState("demo@mail.com");
-    const [password, setPassword] = useState("password");
+    const [credential, setCredential] = useState("");
+    const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
 
-   
+   const payloadForDemo= {
+       credential: "demo@mail.com",
+       password: 'password'
+   }
     const logDemoIn = () => {   
         setErrors([]);
-        return dispatch(sessionActions.login({ credential, password })).catch(
+        return dispatch(sessionActions.login( payloadForDemo )).catch(
             async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
