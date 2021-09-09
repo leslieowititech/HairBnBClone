@@ -54,18 +54,20 @@ const AllLocations = () => {
     return (
         <div className='hair-spots-div'>
             {locationsWithimages.map(location => (
-                <Link to={`/locations/${location.state}/${location.id}`} key={location.id}>
-                    <div className='hair-spot'>
-                        <div className='hair-spot-img'>
+                
+                    <div className='hair-spot' key={location.id}>
+                    <Link to={`/locations/${location.state}/${location.id}`} >
+                        <div className='hair-spot-img all-locations-img'>
                             <img src={location.image.url} alt={location.image.url} className='tile-image-pic' />
                         </div>
+                    </Link>
                         <div>
                             {location.name}
                             {`$${location.price} `}
                             {location.userId === user?.id ? renderEditDelete() : null}
                         </div>
                     </div>
-                </Link>
+                
             ))}
         </div>
     )
