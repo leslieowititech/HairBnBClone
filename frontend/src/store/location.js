@@ -19,16 +19,17 @@ const getLocation = (location) => {
     };
 };
 
-const deleteLocation = () => {
+const deleteLocation = (id) => {
     return {
         type: DELETE_LOCATION,
+        locationId: id
     }
 }
 
 const updateLoaction = (location) => {
     return {
         type: UPDATE_LOCATION,
-        payload: location
+        location
     }
 }
 
@@ -38,7 +39,7 @@ const locationReducer = (state = initialState, action) => {
     let newState;
     switch(action.type) {
         case GET_LOCATION:
-            console.log(action.payload, 'payload')
+            // console.log(action.payload, 'payload')
             
                 newState = {}
                 action.payload.forEach(location => {
@@ -48,28 +49,45 @@ const locationReducer = (state = initialState, action) => {
                 ...state, ...newState
             }
        
-        case DELETE_LOCATION:
-            
-                newState = Object.assign({}, state);
-                newState.location = null;
+        case DELETE_LOCATION:            
+                delete newState[action.locationId]
                 return newState;
             
         case CREATE_LOCATION:
-            
-                newState = Object.assign({}, state);
-                newState.location = action.payload;
+                console.log(action.payload, '_________createthiunkHERE')
+                newState[action.payload.id] = action.payload
                 return newState;
+        case UPDATE_LOCATION:
+            return {
+                ...state,
+                [action.location.id]: action.location
+            }
             
         default:
             return state;
     }
 }
 
-export const createAPlace = () => async dispatch => {
-    const response = await csrfFetch('/api/locations/new')
-    const data = await response.json();
+export const createAPlace = (payload) => async dispatch => {
+    console.log(payload, '____________payloadhere')
+    const response = await csrfFetch('/api/locations/new', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name: payload.name,
+            address: payload.address,
+            price: payload.price,
+            state: payload.state,
+            country: payload.country,
+            city: payload.city
+        })
+    })
+    
 
     if (response.ok) {
+        const data = await response.json()
         await dispatch(getLocation(data))
         return response;
     }

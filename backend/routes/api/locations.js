@@ -1,8 +1,11 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { Location } = require('../../db/models');
+const faker = require('faker');
+const csrf = require('csurf');
 
-// const {Image} = require('../../db/models')
+const csrfProtection = csrf({ cookie: true });
+
 
 const router = express.Router();
 
@@ -27,7 +30,14 @@ router.get('/:state/:id', asyncHandler( async (req, res) => {//id matching
 }))
 
 router.put('/:state/;id')
-router.delete('/:state/:id')
+
+
+router.delete('/:state/:id(\\d+)', asyncHandler(async(req, res) => {//delete a location
+    const {locationId} = +req.params.id
+    const location = await Location.findOne({ where: {id: locationId}})
+
+    
+}))
 
 router.get('/:state', asyncHandler(async (req,res) => {//state matching
    
@@ -43,9 +53,19 @@ router.get('/:state', asyncHandler(async (req,res) => {//state matching
     )
 }))
 
-router.post('/new', asyncHandler(async (req, res) => {
-    const {} = req.body;
-    const location = Location.create({})
+router.post('/new', csrfProtection, asyncHandler(async (req, res) => {
+    const {name, address, price, state, country, city} = req.body;
+    console.log(req.session, '________________________________SESSIONHERE')
+    const location = Location.build({
+        name,
+        address,
+        price,
+        state,
+        country,
+        city,
+        lat: faker.address.latitude(),
+        lng: faker.address.longitude(),
+    })
 
     return res.json(
         location
