@@ -54,7 +54,6 @@ const locationReducer = (state = initialState, action) => {
                 return newState;
             
         case CREATE_LOCATION:
-                console.log(action.payload, '_________createthiunkHERE')
                 newState[action.payload.id] = action.payload
                 return newState;
         case UPDATE_LOCATION:
@@ -81,7 +80,8 @@ export const createAPlace = (payload) => async dispatch => {
             price: payload.price,
             state: payload.state,
             country: payload.country,
-            city: payload.city
+            city: payload.city,
+            userId: +payload.userId
         })
     })
     

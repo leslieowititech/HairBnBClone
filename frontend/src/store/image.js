@@ -1,8 +1,9 @@
 import { csrfFetch } from "./csrf";
 
-const GET_IMAGE = 'image/getImage';
-const DELETE_IMAGE = 'image/deleteImage';
-const UPDATE_IMAGE = '  image/updateImage';
+const GET_IMAGE = 'image/GET_IMAGE';
+const DELETE_IMAGE = 'image/DELETE_IMAGE';
+const UPDATE_IMAGE = '  image/UPDATE_IMAGE';
+const CREATE_IMAGE = 'image/CREATE_IMAGE'
 
 const getImage = (image) => {
     return {
@@ -14,6 +15,13 @@ const getImage = (image) => {
 const deleteImage = () => {
     return{
         type: DELETE_IMAGE
+    }
+}
+
+const createImage = (payload) => {
+    return{
+        type: CREATE_IMAGE,
+        payload: payload
     }
 }
 
@@ -34,6 +42,10 @@ const imageReducer = (state = initialState, action) => {
             newState.image = action.payload
             return newState
         }
+        case CREATE_IMAGE:
+            console.log(action.payload, '_________createthiunkHEREIMG')
+            newState[action.payload.id] = action.payload
+            return newState
         default:
             return state
     }
@@ -48,6 +60,20 @@ export const findImages = () => async dispatch => {
         await dispatch(getImage(data))
         return response
     }
+}
+
+export const createAnImage = (payload) => async dispatch => {
+    const response = await csrfFetch('/api/images/new', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            url: payload.url,
+            locationId: payload.locationId
+        })
+    })
+
 }
 
 export default imageReducer;

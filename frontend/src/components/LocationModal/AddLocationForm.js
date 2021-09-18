@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { createAPlace } from '../../store/location';
 import './AddLocation.css';
@@ -7,6 +7,7 @@ import './AddLocation.css';
 
 const AddLocationForm = () => {
     const dispatch = useDispatch();
+    const user = useSelector(state => state.session.user)
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
@@ -21,7 +22,8 @@ const AddLocationForm = () => {
         city,
         country,
         state,
-        price
+        price,
+        userId: user.id
     }
 
     const handleSubmit = async (e) => {
@@ -42,7 +44,6 @@ const AddLocationForm = () => {
         <form className='log-in-form' onSubmit={handleSubmit}>
             <input 
                 value={name}
-                name='name'
                 onChange={(e) => setName(e.target.value)}
                 className='log-in-form-input'
                 placeholder='Enter spot name'/>
@@ -120,6 +121,10 @@ const AddLocationForm = () => {
                 onChange={(e) => setPrice(e.target.value)}
                 className='log-in-form-input'
                 type='number'
+            />
+            <input
+                placeholder='Enter image url'
+                className='log-in-form-input'
             />
             <button className='log-in-form-button'>Save</button>
         </form>

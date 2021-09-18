@@ -1,6 +1,6 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { Location } = require('../../db/models');
+const { Location, Image } = require('../../db/models');
 const faker = require('faker');
 const csrf = require('csurf');
 const { check } = require('express-validator');
@@ -68,18 +68,21 @@ router.get('/:state', asyncHandler(async (req,res) => {//state matching
 }))
 
 router.post('/new', csrfProtection, validateAddSpot,  asyncHandler(async (req, res) => {
-    const {name, address, price, state, country, city} = req.body;
-    console.log(req.session, '________________________________SESSIONHERE')
-    const location = Location.build({
+    const {name, address, price, state, country, city, userId} = req.body;
+    // console.log(req, '0000000_____000____00____000___))')
+    const location = await Location.create({
         name,
         address,
         price,
         state,
         country,
+        userId,
         city,
         lat: faker.address.latitude(),
         lng: faker.address.longitude(),
     })
+
+   
 
     return res.json(
         location
