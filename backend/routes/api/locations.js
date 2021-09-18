@@ -3,11 +3,25 @@ const asyncHandler = require('express-async-handler');
 const { Location } = require('../../db/models');
 const faker = require('faker');
 const csrf = require('csurf');
+const { check } = require('express-validator');
+const { handleValidationErrors } = require('../../utils/validation');
 
 const csrfProtection = csrf({ cookie: true });
 
 
 const router = express.Router();
+
+const validateAddSpot = [
+    check('name')
+        .exists({ checkFalsy: true })
+        .isLength({ min: 1 })
+        .withMessage('Enter at least one character for the name'),
+    check('price')
+        .exists({ checkFalsy: true })
+        .withMessage('Price cannot be empty'),
+    handleValidationErrors,
+
+]
 
 router.get('/', asyncHandler( async (req,res) => {
     const locations = await Location.findAll();
@@ -53,7 +67,7 @@ router.get('/:state', asyncHandler(async (req,res) => {//state matching
     )
 }))
 
-router.post('/new', csrfProtection, asyncHandler(async (req, res) => {
+router.post('/new', csrfProtection, validateAddSpot,  asyncHandler(async (req, res) => {
     const {name, address, price, state, country, city} = req.body;
     console.log(req.session, '________________________________SESSIONHERE')
     const location = Location.build({

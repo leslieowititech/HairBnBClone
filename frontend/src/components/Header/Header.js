@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useState} from 'react';
 import LoginSignup from './LoginSignup';
+import AddLocationModal from '../LocationModal';
 
 
 import './Header.css';
@@ -26,7 +27,7 @@ export const Header = ({isLoaded}) => {
           </div>       
           <div className="right-nav-div">
             <nav className="right-nav">
-              <li className="header-li">List your Spot</li>
+              <li className="header-li"><AddLocationModal/></li>
               <li className="header-li">🌐</li>
               <li className="header-li">
                 <button 

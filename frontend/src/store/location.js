@@ -39,7 +39,7 @@ const locationReducer = (state = initialState, action) => {
     let newState;
     switch(action.type) {
         case GET_LOCATION:
-            // console.log(action.payload, 'payload')
+            // console.log(action.payload, 'payloadGet')
             
                 newState = {}
                 action.payload.forEach(location => {
@@ -88,7 +88,7 @@ export const createAPlace = (payload) => async dispatch => {
 
     if (response.ok) {
         const data = await response.json()
-        await dispatch(getLocation(data))
+        await dispatch(cretaeLocation(data))
         return response;
     }
 }

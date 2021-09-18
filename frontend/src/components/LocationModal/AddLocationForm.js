@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux'
-
+import { useDispatch } from 'react-redux';
 
 import { createAPlace } from '../../store/location';
+import './AddLocation.css';
 
 
 const AddLocationForm = () => {
@@ -12,38 +12,56 @@ const AddLocationForm = () => {
     const [city, setCity] = useState('');
     const [country, setCountry] = useState('');
     const [state, setState] = useState('');
+    const [price, setPrice] = useState(0);
+    const [errors, setErrors] = useState([]);
 
     const payload = {
         name,
         address,
         city,
         country,
-        state
+        state,
+        price
     }
 
-    useEffect(() => {
-        dispatch(createAPlace(payload))
-    })
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const data = await dispatch(createAPlace(payload))
+        setErrors(data)
+        console.log(data, '___________dataHandleSubmit')
+    }
 
     return (
-        <form>
+        <>
+        <ul>
+            {errors.map((err, index)=> (
+                <li key={index}>{err.msg}</li>
+            ))}
+        </ul>
+        <h3 className='add-a-spot-form-header'>Lets add your Spot!</h3>
+        <form className='log-in-form' onSubmit={handleSubmit}>
             <input 
                 value={name}
+                name='name'
                 onChange={(e) => setName(e.target.value)}
+                className='log-in-form-input'
                 placeholder='Enter spot name'/>
             <input 
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
+                className='log-in-form-input'
                 placeholder='Enter address' />
             <input 
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
+                className='log-in-form-input'
                 placeholder='Enter city' />
             <input
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
+                className='log-in-form-input'
                 placeholder='Enter country name'/>
-            <select name="state" onChange={(e) => setState(e.target.value)}>
+            <select name="state" onChange={(e) => setState(e.target.value)} className='log-in-form-input'>
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>
                 <option value="AZ">Arizona</option>
@@ -96,8 +114,16 @@ const AddLocationForm = () => {
                 <option value="WI">Wisconsin</option>
                 <option value="WY">Wyoming</option>
             </select>
-            <button>Save</button>
+            <input
+                placeholder='Enter your price'
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+                className='log-in-form-input'
+                type='number'
+            />
+            <button className='log-in-form-button'>Save</button>
         </form>
+        </>
     )
 }
 
