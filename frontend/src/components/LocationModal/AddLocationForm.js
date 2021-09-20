@@ -25,15 +25,25 @@ const AddLocationForm = () => {
         country,
         state,
         price,
-        userId: user.id
+        userId: user?.id
     }
+    const imagePayload = {
+        url: imageUrl,
+        locationId: payload.id
+     }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const data = await dispatch(createAPlace(payload))
-        const imgData = await dispatch(createAnImage())
-        setErrors(data)
-        console.log(data, '___________dataHandleSubmit')
+        if(!user){
+            alert('Please login or signup')
+        }else{
+
+            const data = await dispatch(createAPlace(payload))
+            // const imgData = await dispatch(createAnImage(imagePayload))
+            setErrors(data)
+        }
+        
+        
     }
 
     return (
