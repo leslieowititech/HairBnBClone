@@ -74,6 +74,13 @@ export const createAnImage = (payload) => async dispatch => {
         })
     })
 
+    if(response.ok){
+       const data = await response.json()
+       dispatch(createImage(data));
+       return response
+
+    }
+
 }
 
 export default imageReducer;

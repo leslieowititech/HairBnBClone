@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { createAPlace } from '../../store/location';
+import { createAnImage } from '../../store/image';
 import './AddLocation.css';
 
 
@@ -15,6 +16,7 @@ const AddLocationForm = () => {
     const [state, setState] = useState('');
     const [price, setPrice] = useState(0);
     const [errors, setErrors] = useState([]);
+    const [imageUrl, setImageUrl] = useState('')
 
     const payload = {
         name,
@@ -29,6 +31,7 @@ const AddLocationForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const data = await dispatch(createAPlace(payload))
+        const imgData = await dispatch(createAnImage())
         setErrors(data)
         console.log(data, '___________dataHandleSubmit')
     }
@@ -125,6 +128,8 @@ const AddLocationForm = () => {
             <input
                 placeholder='Enter image url'
                 className='log-in-form-input'
+                value={imageUrl}
+                onChange={(e) => setImageUrl(e.target.value)}
             />
             <button className='log-in-form-button'>Save</button>
         </form>
