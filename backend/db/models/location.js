@@ -13,10 +13,10 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Location.associate = function(models) {
     // associations can be defined here
-    Location.belongsTo(models.User, { foreignKey: 'userId', onDelete: 'cascade', hooks: true})
-    Location.hasMany(models.Booking, { foreignKey: 'locationId', onDelete: 'cascade', hooks: true})
-    Location.hasMany(models.Image, { foreignKey: 'locationId', onDelete: 'cascade', hooks: true})
-    Location.hasMany(models.Review, { foreignKey: 'locationId', onDelete: 'cascade', hooks: true})
+    Location.belongsTo(models.User, { foreignKey: 'userId'})
+    Location.hasMany(models.Booking, { foreignKey: 'locationId', onDelete: 'CASCADE', hooks: true })
+    Location.hasMany(models.Image, { foreignKey: 'locationId', onDelete: 'CASCADE', hooks: true })
+    Location.hasMany(models.Review, { foreignKey: 'locationId', onDelete: 'CASCADE', hooks: true })
   };
   return Location;
 };

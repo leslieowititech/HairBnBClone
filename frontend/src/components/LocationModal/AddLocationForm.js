@@ -38,7 +38,10 @@ const AddLocationForm = () => {
         }else{
 
             const data = await dispatch(createAPlace(payload))
-            setErrors(data)
+            if(data.errors){
+                
+                setErrors(data)
+            }
         }
         
         
@@ -47,7 +50,7 @@ const AddLocationForm = () => {
     return (
         <>
         <ul>
-            {errors.map((err, index)=> (
+            {errors?.map((err, index)=> (
                 <li key={index}>{err.msg}</li>
             ))}
         </ul>

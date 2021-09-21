@@ -10,7 +10,9 @@ module.exports = {
       },
       locationId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
       },
       userId: {
         allowNull: false,

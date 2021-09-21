@@ -1,7 +1,6 @@
 import { csrfFetch } from "./csrf";
 
 const GET_IMAGE = 'image/GET_IMAGE';
-const DELETE_IMAGE = 'image/DELETE_IMAGE';
 const UPDATE_IMAGE = '  image/UPDATE_IMAGE';
 const CREATE_IMAGE = 'image/CREATE_IMAGE'
 
@@ -12,11 +11,7 @@ const getImage = (image) => {
     }
 }
 
-const deleteImage = () => {
-    return{
-        type: DELETE_IMAGE
-    }
-}
+
 
 const createImage = (payload) => {
     return{
@@ -32,19 +27,19 @@ const updateImage = (image) => {
     }
 }
 
-const initialState = {image: null}//initialstate
+const initialState = {}//initialstate
 
 const imageReducer = (state = initialState, action) => {
     let newState;
     switch(action.type) {
         case GET_IMAGE:{
-            newState = Object.assign({}, state);
+            newState = {...state};
             newState.image = action.payload
             return newState
         }
         case CREATE_IMAGE:
-            console.log(action.payload, '_________createthiunkHEREIMG')
-            newState[action.payload.id] = action.payload
+            newState = {...state}
+            newState[action.payload?.id] = action.payload
             return newState
         default:
             return state

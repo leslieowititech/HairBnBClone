@@ -41,9 +41,9 @@ const locationReducer = (state = initialState, action) => {
     let newState;
     switch(action.type) {
         case GET_LOCATION:
-            // console.log(action.payload, 'payloadGet')
+            console.log(action.payload, 'payloadGet')
             
-                newState = {}
+                newState = {...state}
                 action.payload.forEach(location => {
                 newState[location.id] = location
             })
@@ -51,11 +51,13 @@ const locationReducer = (state = initialState, action) => {
                 ...state, ...newState
             }
        
-        case DELETE_LOCATION:            
+        case DELETE_LOCATION:  
+                newState = {...state}   
                 delete newState[action.locationId]
                 return newState;
             
         case CREATE_LOCATION:
+                newState = {...state}
                 newState[action.payload?.id] = action.payload
                 return newState;
         case UPDATE_LOCATION:
@@ -100,7 +102,7 @@ export const createAPlace = (payload) => async dispatch => {
 }
 
 export const deleteAPlace = (state, id) =>  async dispatch => {
-    const response = await csrfFetch(`/api/${state}/${id}`, {
+    const response = await csrfFetch(`/api/locations/${state}/${id}`, {
         method: 'DELETE'
     })
 

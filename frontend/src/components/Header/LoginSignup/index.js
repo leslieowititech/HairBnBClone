@@ -2,11 +2,11 @@ import React, {useState} from 'react';
 import {NavLink} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 
-import * as sessionActions from '../../../store/session'
+import * as sessionActions from '../../../store/session';
 import LoginFormModal from '../../LoginFormModal';
 import ProfileButton from '../../Navigation/ProfileButton';
-
 import './LoginSignup.css';
+import AddLocationModal from '../../LocationModal';
 
 const LoginSignup = ({isLoaded}) => {
     const dispatch = useDispatch();
@@ -53,7 +53,7 @@ const LoginSignup = ({isLoaded}) => {
                 <li><button className='demo-user-button' onClick={logDemoIn}>Demo User</button></li>
             </div>
             <div className='login-signup-help-list-yourspot'>
-                <li>List your spot</li>
+                <li><AddLocationModal/></li>
                 <li>Help</li>
             </div>
         </div>
