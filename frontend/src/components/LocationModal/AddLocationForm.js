@@ -31,7 +31,7 @@ const AddLocationForm = () => {
         url: imageUrl,
         locationId: payload.id
      }
-
+     console.log(payload.id, 'Finding id')
     const handleSubmit = async (e) => {
         e.preventDefault()
         if(!user){
@@ -39,7 +39,7 @@ const AddLocationForm = () => {
         }else{
 
             const data = await dispatch(createAPlace(payload))
-            // const imgData = await dispatch(createAnImage(imagePayload))
+            const imgData = await dispatch(createAnImage(imagePayload))
             setErrors(data)
         }
         

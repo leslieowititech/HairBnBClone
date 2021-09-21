@@ -1,11 +1,11 @@
 import { csrfFetch } from './csrf';
 
-const GET_LOCATION = 'location/getLocation';
-const DELETE_LOCATION = 'location/deleteLocation';
-const UPDATE_LOCATION = 'location/updateLoaction';
-const CREATE_LOCATION = 'location/cretaeLocation';
+const GET_LOCATION = 'location/GET_LOCATION';
+const DELETE_LOCATION = 'location/DELETE_LOCATION';
+const UPDATE_LOCATION = 'location/UPDATE_LOCATION';
+const CREATE_LOCATION = 'location/CREATE_LOCATION';
 
-const cretaeLocation = (location) => {
+const createLocation = (location) => {
     return {
         type: CREATE_LOCATION,
         payload: location
@@ -54,7 +54,7 @@ const locationReducer = (state = initialState, action) => {
                 return newState;
             
         case CREATE_LOCATION:
-                newState[action.payload.id] = action.payload
+                newState[action.payload?.id] = action.payload
                 return newState;
         case UPDATE_LOCATION:
             return {
@@ -88,7 +88,7 @@ export const createAPlace = (payload) => async dispatch => {
 
     if (response.ok) {
         const data = await response.json()
-        await dispatch(cretaeLocation(data))
+        await dispatch(createLocation(data))
         return response;
     }
 }

@@ -70,6 +70,7 @@ const AllLocations = () => {
                     </div>
                 
             ))}
+          
         </div>
     )
 }
