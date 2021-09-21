@@ -100,7 +100,7 @@ export const createAPlace = (payload) => async dispatch => {
 }
 
 export const deleteAPlace = (state, id) =>  async dispatch => {
-    const response = await csrfFetch(`/api/${state}/${id}`, {
+    const response = await csrfFetch(`/api/locations/${state}/${id}`, {
         method: 'DELETE'
     })
 

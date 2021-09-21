@@ -10,7 +10,9 @@ module.exports = {
       },
       locationId: {
         type: Sequelize.INTEGER,
-        references: { model: 'Locations' }
+        references: { model: 'Locations' },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
       },
       url: {
         type: Sequelize.STRING
