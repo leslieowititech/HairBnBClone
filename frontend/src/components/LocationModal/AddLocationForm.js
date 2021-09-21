@@ -38,7 +38,10 @@ const AddLocationForm = () => {
         }else{
 
             const data = await dispatch(createAPlace(payload))
-            setErrors(data)
+            if(data.errors){
+                
+                setErrors(data)
+            }
         }
         
         
@@ -46,11 +49,11 @@ const AddLocationForm = () => {
 
     return (
         <>
-        {/* <ul>
+        <ul>
             {errors?.map((err, index)=> (
                 <li key={index}>{err.msg}</li>
             ))}
-        </ul> */}
+        </ul>
         <h3 className='add-a-spot-form-header'>Lets add your Spot!</h3>
         <form className='log-in-form' onSubmit={handleSubmit}>
             <input 

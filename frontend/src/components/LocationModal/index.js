@@ -8,7 +8,7 @@ const AddLocationModal = () => {
 
     return (
         <>
-            <button onClick={() => setShowModal(true)}>List your Spot</button>
+            <button onClick={() => setShowModal(true)} className='list-your-spot'>List your Spot</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <AddLocationForm/>

@@ -1,3 +1,9 @@
 .add-a-spot-form-header{
     margin: 0 auto;
 }
+
+.list-your-spot{
+    background: none;
+    font-size: medium;
+    cursor: pointer;
+}
