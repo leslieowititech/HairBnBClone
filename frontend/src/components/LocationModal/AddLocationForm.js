@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { createAPlace } from '../../store/location';
-import { createAnImage } from '../../store/image';
 import './AddLocation.css';
 
 
@@ -16,7 +15,9 @@ const AddLocationForm = () => {
     const [state, setState] = useState('');
     const [price, setPrice] = useState(0);
     const [errors, setErrors] = useState([]);
-    const [imageUrl, setImageUrl] = useState('')
+    const [imageUrl, setImageUrl] = useState('');
+
+    // const imgRegex = /(https:\/\/)([^\s(["<,>/]*)(\/)[^\s[",><]*(.png|.jpg)(\?[^\s[",><]*)?/g
 
     const payload = {
         name,
@@ -25,21 +26,18 @@ const AddLocationForm = () => {
         country,
         state,
         price,
-        userId: user?.id
+        userId: user?.id,
+        url: imageUrl
     }
-    const imagePayload = {
-        url: imageUrl,
-        locationId: payload.id
-     }
+    
      console.log(payload.id, 'Finding id')
     const handleSubmit = async (e) => {
         e.preventDefault()
-        if(!user){
+         if(!user){
             alert('Please login or signup')
         }else{
 
             const data = await dispatch(createAPlace(payload))
-            const imgData = await dispatch(createAnImage(imagePayload))
             setErrors(data)
         }
         

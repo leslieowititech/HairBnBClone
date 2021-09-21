@@ -1,4 +1,6 @@
 import { csrfFetch } from './csrf';
+import { createAnImage } from './image';
+
 
 const GET_LOCATION = 'location/GET_LOCATION';
 const DELETE_LOCATION = 'location/DELETE_LOCATION';
@@ -88,7 +90,11 @@ export const createAPlace = (payload) => async dispatch => {
 
     if (response.ok) {
         const data = await response.json()
-        await dispatch(createLocation(data))
+        let imagePayload = {}
+        imagePayload.url = payload.url
+        imagePayload.locationId = data.id
+        await Promise.all([dispatch(createAnImage(imagePayload)), dispatch(createLocation(data))])
+        
         return response;
     }
 }

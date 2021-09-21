@@ -11,20 +11,20 @@ import './LoginSignup.css';
 const LoginSignup = ({isLoaded}) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const [credential, setCredential] = useState("");
-    const [password, setPassword] = useState("");
-    const [errors, setErrors] = useState([]);
+    // const [credential, setCredential] = useState("");
+    // const [password, setPassword] = useState("");
+    // const [errors, setErrors] = useState([]);
 
    const payloadForDemo= {
        credential: "demo@user.io",
        password: 'password'
    }
     const logDemoIn = () => {   
-        setErrors([]);
+        // setErrors([]);
         return dispatch(sessionActions.login( payloadForDemo )).catch(
             async (res) => {
                 const data = await res.json();
-                if (data && data.errors) setErrors(data.errors);
+                // if (data && data.errors) setErrors(data.errors);
             }
         );
     };

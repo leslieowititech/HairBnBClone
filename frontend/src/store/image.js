@@ -63,6 +63,7 @@ export const findImages = () => async dispatch => {
 }
 
 export const createAnImage = (payload) => async dispatch => {
+    console.log(payload, 'imagePayload')
     const response = await csrfFetch('/api/images/new', {
         method: 'POST',
         headers: {
