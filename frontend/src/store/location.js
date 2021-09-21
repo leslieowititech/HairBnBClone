@@ -43,7 +43,7 @@ const locationReducer = (state = initialState, action) => {
         case GET_LOCATION:
             // console.log(action.payload, 'payloadGet')
             
-                newState = {}
+                newState = {...state}
                 action.payload.forEach(location => {
                 newState[location.id] = location
             })
@@ -51,12 +51,20 @@ const locationReducer = (state = initialState, action) => {
                 ...state, ...newState
             }
        
-        case DELETE_LOCATION:            
+        case DELETE_LOCATION:  
+                newState = {...state}   
+            console.log(newState, '____________before')
+
                 delete newState[action.locationId]
+            console.log(newState, '____________after')
+
                 return newState;
             
         case CREATE_LOCATION:
+                newState = {...state}
+                console.log(newState, '____________before')
                 newState[action.payload?.id] = action.payload
+                console.log(newState, '____________after')
                 return newState;
         case UPDATE_LOCATION:
             return {

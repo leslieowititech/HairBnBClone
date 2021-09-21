@@ -46,11 +46,11 @@ const AddLocationForm = () => {
 
     return (
         <>
-        <ul>
-            {errors.map((err, index)=> (
+        {/* <ul>
+            {errors?.map((err, index)=> (
                 <li key={index}>{err.msg}</li>
             ))}
-        </ul>
+        </ul> */}
         <h3 className='add-a-spot-form-header'>Lets add your Spot!</h3>
         <form className='log-in-form' onSubmit={handleSubmit}>
             <input 
