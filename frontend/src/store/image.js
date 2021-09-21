@@ -39,7 +39,7 @@ const imageReducer = (state = initialState, action) => {
         }
         case CREATE_IMAGE:
             newState = {...state}
-            newState[action.payload.id] = action.payload
+            newState[action.payload?.id] = action.payload
             return newState
         default:
             return state
