@@ -70,7 +70,7 @@ const locationReducer = (state = initialState, action) => {
 }
 
 export const createAPlace = (payload) => async dispatch => {
-    console.log(payload, '____________payloadhere')
+    // console.log(payload, '____________payloadhere')
     const response = await csrfFetch('/api/locations/new', {
         method: 'POST',
         headers: {
@@ -96,6 +96,16 @@ export const createAPlace = (payload) => async dispatch => {
         await Promise.all([dispatch(createAnImage(imagePayload)), dispatch(createLocation(data))])
         
         return response;
+    }
+}
+
+export const deleteAPlace = (state, id) =>  async dispatch => {
+    const response = await csrfFetch(`/api/${state}/${id}`, {
+        method: 'DELETE'
+    })
+
+    if(response.ok){
+        await dispatch(deleteLocation(id))
     }
 }
 

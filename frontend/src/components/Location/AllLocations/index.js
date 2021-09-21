@@ -13,13 +13,16 @@ const AllLocations = () => {
     const locationsArray = Object.values(locations);
     const imagesArray = images.image;
     const user = useSelector(state => state.session.user);
-    console.log(images, 'images')
+    // console.log(images, 'images')
 
-    const renderEditDelete = () => {
+    const renderEditDelete = (state, id) => {
+        const handleDelete = () => {
+            dispatch(locationActions.deleteAPlace(state, id))
+        }
         return (
             <div className='edit-and-delete-buttons-div'>
                 <button className='button'>Edit</button>
-                <button className='button'>Delete</button>
+                <button className='button' onClick={handleDelete}>Delete</button>
             </div>
         )
     }
@@ -65,7 +68,7 @@ const AllLocations = () => {
                         <div>
                             {location.name}
                             {`$${location.price} `}
-                            {location.userId === user?.id ? renderEditDelete() : null}
+                            {location.userId === user?.id ? renderEditDelete(location.state, location.id) : null}
                         </div>
                     </div>
                 
