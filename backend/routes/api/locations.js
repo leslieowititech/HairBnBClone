@@ -47,8 +47,9 @@ router.put('/:state/;id')
 
 
 router.delete('/:state/:id(\\d+)', asyncHandler(async(req, res) => {//delete a location
-    const {locationId} = +req.params.id
-    const location = await Location.findOne({ where: {id: locationId}})
+    const {id} = req.params
+    const location = await Location.findOne({ where: {id: id}})
+    console.log(location, 'hereee___________________________&*(_________________YAAAAAAAAAAA_________________')
     await location.destroy()
     
 }))
