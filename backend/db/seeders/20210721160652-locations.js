@@ -20,6 +20,7 @@ module.exports = {
      city: faker.address.city(),
      lat: faker.address.latitude(),
      lng: faker.address.longitude(),
+     capacity: 40
     },
      {
        userId: 1,
@@ -31,6 +32,7 @@ module.exports = {
        city: faker.address.city(),
        lat: faker.address.latitude(),
        lng: faker.address.longitude(),
+       capacity: 30
      },
      {
        userId: 1,
@@ -42,6 +44,7 @@ module.exports = {
        city: faker.address.city(),
        lat: faker.address.latitude(),
        lng: faker.address.longitude(),
+       capacity: 90
      },
      {
        userId: 1,
@@ -53,6 +56,7 @@ module.exports = {
        city: faker.address.city(),
        lat: faker.address.latitude(),
        lng: faker.address.longitude(),
+       capacity: 80
      },
      {
        userId: 1,
@@ -64,6 +68,7 @@ module.exports = {
        city: faker.address.city(),
        lat: faker.address.latitude(),
        lng: faker.address.longitude(),
+       capacity: 10
      },
      {
        userId: 2,
@@ -75,6 +80,7 @@ module.exports = {
        city: faker.address.city(),
        lat: faker.address.latitude(),
        lng: faker.address.longitude(),
+       capacity: 40
      },
      {
        userId: 2,
@@ -86,6 +92,7 @@ module.exports = {
        city: faker.address.city(),
        lat: faker.address.latitude(),
        lng: faker.address.longitude(),
+       capacity: 20
      },
      {
        userId: 2,
@@ -97,6 +104,7 @@ module.exports = {
        city: faker.address.city(),
        lat: faker.address.latitude(),
        lng: faker.address.longitude(),
+       capacity: 40
      },
      {
        userId: 2,
@@ -108,6 +116,7 @@ module.exports = {
        city: faker.address.city(),
        lat: faker.address.latitude(),
        lng: faker.address.longitude(),
+       capacity: 45
      },
      {
        userId: 3,
@@ -119,6 +128,7 @@ module.exports = {
        city: faker.address.city(),
        lat: faker.address.latitude(),
        lng: faker.address.longitude(),
+       capacity: 35
      },
      //
      {
@@ -131,6 +141,7 @@ module.exports = {
        city: faker.address.city(),
        lat: faker.address.latitude(),
        lng: faker.address.longitude(),
+       capacity: 40
      },
      {
        userId: 2,
@@ -142,6 +153,7 @@ module.exports = {
        city: faker.address.city(),
        lat: faker.address.latitude(),
        lng: faker.address.longitude(),
+       capacity: 40
      },
      {
        userId: 4,
@@ -153,6 +165,7 @@ module.exports = {
        city: faker.address.city(),
        lat: faker.address.latitude(),
        lng: faker.address.longitude(),
+       capacity: 40
      },
      {
        userId: 4,
@@ -164,6 +177,7 @@ module.exports = {
        city: faker.address.city(),
        lat: faker.address.latitude(),
        lng: faker.address.longitude(),
+       capacity: 40
      },
   ], {});
   },

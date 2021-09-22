@@ -16,8 +16,8 @@ const AllLocations = () => {
     // console.log(images, 'images')
 
     const renderEditDelete = (state, id) => {
-        const handleDelete = () => {
-            dispatch(locationActions.deleteAPlace(state, id))
+        const handleDelete = async () => {
+            await dispatch(locationActions.deleteAPlace(state, id))
         }
         return (
             <div className='edit-and-delete-buttons-div'>

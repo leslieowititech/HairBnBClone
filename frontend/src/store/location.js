@@ -108,6 +108,7 @@ export const deleteAPlace = (state, id) =>  async dispatch => {
 
     if(response.ok){
         await dispatch(deleteLocation(id))
+        return response
     }
 }
 
@@ -143,15 +144,6 @@ export const findOnePlace = (state,id) => async dispatch => {
     }
 }
 
-export const deleteOneLocation = () => async dispatch => {
-    const response = await csrfFetch('/api/locations/:state/:id')
-    const data = await response.json()
-
-    if (response.ok) {
-        await dispatch(deleteLocation(data))
-        return response;
-    }
-}
 
 export const updtaetOneLocation = () => async dispatch => {
     const response = await csrfFetch('/api/locations/:state/:id')

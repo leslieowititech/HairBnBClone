@@ -9,7 +9,8 @@ module.exports = (sequelize, DataTypes) => {
     country: DataTypes.STRING,
     city: DataTypes.STRING,
     lat: DataTypes.DECIMAL,
-    lng: DataTypes.DECIMAL
+    lng: DataTypes.DECIMAL,
+    capacity: DataTypes.INTEGER,
   }, {});
   Location.associate = function(models) {
     // associations can be defined here
