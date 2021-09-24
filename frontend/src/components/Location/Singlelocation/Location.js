@@ -1,21 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import BookingCalender from 'react-booking-calendar'
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 import { useParams } from 'react-router';
+
+
 import * as locationActions from '../../../store/location';
 import * as imageActions from '../../../store/image';
-
 import './SingleLocation.css';
+import { findBookings } from '../../../store/booking';
 
 const SingleLocation = () => {
     const {stateName, id} = useParams();
     const dispatch = useDispatch();
+    const user = useSelector(state => state.session.user)
     const location = useSelector(state => state.location);
+    const bookings = useSelector(state => state.booking);
     const images = useSelector(state => state.image);
     const locationArray = Object.values(location).filter(location => {
         return +location.id === +id
-    })     
+    });
+    // console.log(locationArray, 'testArr')
+    
+    const bookingsArray = Object.values(bookings).filter(booking => booking.locationId === locationArray[0]?.id).map(booking => booking.bookingDate);
+    console.log(bookingsArray, 'array')
+
 
     const imagesArray= images.image
 
@@ -44,6 +52,7 @@ const SingleLocation = () => {
     useEffect(() => {
         dispatch(locationActions.findOnePlace(stateName , id))
         dispatch(imageActions.findImages())
+        dispatch(findBookings())
     },[dispatch])
 
     
@@ -58,8 +67,8 @@ const SingleLocation = () => {
 
             ))}
             <div className='single-location-image-gallery'>
-                {locationsWithimages.map(location => (
-                    <img src={location.image.url} alt={location.image.url} className='single-image-pic'/>
+                {locationsWithimages.map((location, index) => (
+                    <img key={index} src={location.image.url} alt={location.image.url} className='single-image-pic'/>
 
                 ))}
             </div>
@@ -71,6 +80,7 @@ const SingleLocation = () => {
                         placeholder='Booking date'
                         className='booking-form-input'
                     ></input>
+                    <BookingCalender bookings={bookingsArray} clickable={true}/>
                     <input
                         type='text'
                         placeholder='Number of clients'

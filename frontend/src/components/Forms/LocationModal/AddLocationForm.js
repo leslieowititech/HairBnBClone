@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { createAPlace } from '../../store/location';
+import { createAPlace } from '../../../store/location';
 import './AddLocation.css';
 
 
@@ -16,6 +16,7 @@ const AddLocationForm = () => {
     const [price, setPrice] = useState(0);
     const [errors, setErrors] = useState([]);
     const [imageUrl, setImageUrl] = useState('');
+    const [capacity,setCapacity] = useState(0);
 
     // const imgRegex = /(https:\/\/)([^\s(["<,>/]*)(\/)[^\s[",><]*(.png|.jpg)(\?[^\s[",><]*)?/g
 
@@ -142,6 +143,13 @@ const AddLocationForm = () => {
                 value={imageUrl}
                 onChange={(e) => setImageUrl(e.target.value)}
             />
+            <input 
+                    placeholder='Enter spot capacity' 
+                    type='number' 
+                    value={capacity}
+                    onChange={(e) => setCapacity(e.target.value)}
+                    className='log-in-form-input'></input>
+
             <button className='log-in-form-button'>Save</button>
         </form>
         </>

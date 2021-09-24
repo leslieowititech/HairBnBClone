@@ -15,6 +15,8 @@ router.use('/locations', locationRouter);
 
 router.use('/images', imageRouter);
 
+router.use('/bookings', bookingsRouter);
+
 
 
 module.exports = router;
