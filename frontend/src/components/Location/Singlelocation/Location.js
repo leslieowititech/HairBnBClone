@@ -1,4 +1,5 @@
 import React from 'react';
+import BookingCalender from 'react-booking-calendar'
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useParams } from 'react-router';
@@ -8,8 +9,7 @@ import * as imageActions from '../../../store/image';
 import './SingleLocation.css';
 
 const SingleLocation = () => {
-    const {stateName, id} = useParams()
-    console.log(id, 'id')
+    const {stateName, id} = useParams();
     const dispatch = useDispatch();
     const location = useSelector(state => state.location);
     const images = useSelector(state => state.image);
