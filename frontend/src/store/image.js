@@ -41,6 +41,11 @@ const imageReducer = (state = initialState, action) => {
             newState = {...state}
             newState[action.payload?.id] = action.payload
             return newState
+        case UPDATE_IMAGE:
+            return {
+                ...state,
+               [action.payload.id]: action.payload
+            }
         default:
             return state
     }
