@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useState} from 'react';
 import LoginSignup from './LoginSignup';
-import AddLocationModal from '../LocationModal';
+import AddLocationModal from '../Forms/LocationModal';
 
 
 import './Header.css';

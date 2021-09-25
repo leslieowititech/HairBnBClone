@@ -3,10 +3,10 @@ import {NavLink} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 
 import * as sessionActions from '../../../store/session';
-import LoginFormModal from '../../LoginFormModal';
+import LoginFormModal from '../../Forms/LoginFormModal';
 import ProfileButton from '../../Navigation/ProfileButton';
 import './LoginSignup.css';
-import AddLocationModal from '../../LocationModal';
+import AddLocationModal from '../../Forms/LocationModal';
 
 const LoginSignup = ({isLoaded}) => {
     const dispatch = useDispatch();
