@@ -41,7 +41,7 @@ const locationReducer = (state = initialState, action) => {
     let newState;
     switch(action.type) {
         case GET_LOCATION:
-            console.log(action.payload, 'payloadGet')
+            // console.log(action.payload, 'payloadGet')
             
                 newState = {...state}
                 action.payload.forEach(location => {
@@ -72,7 +72,7 @@ const locationReducer = (state = initialState, action) => {
 }
 
 export const createAPlace = (payload) => async dispatch => {
-    // console.log(payload, '____________payloadhere')
+    console.log(payload, '____________payloadhere')
     const response = await csrfFetch('/api/locations/new', {
         method: 'POST',
         headers: {
@@ -85,7 +85,8 @@ export const createAPlace = (payload) => async dispatch => {
             state: payload.state,
             country: payload.country,
             city: payload.city,
-            userId: +payload.userId
+            userId: +payload.userId,
+            capacity: 10//dont know why i cant access capacity
         })
     })
     
