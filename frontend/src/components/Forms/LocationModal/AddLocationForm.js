@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { createAPlace } from '../../store/location';
+import { createAPlace } from '../../../store/location';
 import './AddLocation.css';
 
 
@@ -16,6 +16,7 @@ const AddLocationForm = () => {
     const [price, setPrice] = useState(0);
     const [errors, setErrors] = useState([]);
     const [imageUrl, setImageUrl] = useState('');
+    const [capacity, setCapacity] = useState();
 
     // const imgRegex = /(https:\/\/)([^\s(["<,>/]*)(\/)[^\s[",><]*(.png|.jpg)(\?[^\s[",><]*)?/g
 
@@ -27,10 +28,10 @@ const AddLocationForm = () => {
         state,
         price,
         userId: user?.id,
-        url: imageUrl
+        url: imageUrl,
+        capacity: capacity,
     }
     
-     console.log(payload.id, 'Finding id')
     const handleSubmit = async (e) => {
         e.preventDefault()
          if(!user){
@@ -38,9 +39,10 @@ const AddLocationForm = () => {
         }else{
 
             const data = await dispatch(createAPlace(payload))
+            console.log(data, 'Data')
             if(data.errors){
-                
-                setErrors(data)
+                console.log(data.errors, 'Errors')
+                setErrors(data.errors)
             }
         }
         
@@ -142,6 +144,15 @@ const AddLocationForm = () => {
                 value={imageUrl}
                 onChange={(e) => setImageUrl(e.target.value)}
             />
+            <input 
+                    placeholder='Enter spot capacity' 
+                    name='capacity'
+                    value={capacity}
+                    onChange={(e) => setCapacity(e.target.value)}
+                    type='number' 
+                    className='log-in-form-input'
+            />
+
             <button className='log-in-form-button'>Save</button>
         </form>
         </>

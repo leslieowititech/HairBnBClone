@@ -68,8 +68,9 @@ router.get('/:state', asyncHandler(async (req,res) => {//state matching
 }))
 
 router.post('/new', csrfProtection, validateAddSpot,  asyncHandler(async (req, res) => {
-    const {name, address, price, state, country, city, userId} = req.body;
+    const {name, address, price, state, country, city, userId, capacity} = req.body;
     // console.log(req, '0000000_____000____00____000___))')
+    console.log(req.body, '________________________0000000_____________')
     const location = await Location.create({
         name,
         address,
@@ -80,6 +81,7 @@ router.post('/new', csrfProtection, validateAddSpot,  asyncHandler(async (req, r
         city,
         lat: faker.address.latitude(),
         lng: faker.address.longitude(),
+        capacity
     })
 
    
