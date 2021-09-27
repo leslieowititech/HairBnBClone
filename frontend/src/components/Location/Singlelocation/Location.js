@@ -83,6 +83,7 @@ const SingleLocation = () => {
                         type='text'
                         placeholder='Number of clients'
                         className='booking-form-input'
+                        //test
                     ></input>
                     <button type='submit' className='booking-form-button'>Check Availability</button>
                 </form>
