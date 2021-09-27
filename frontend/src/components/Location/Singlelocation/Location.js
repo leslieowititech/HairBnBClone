@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import BookingCalender from 'react-booking-calendar'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 
@@ -19,12 +18,11 @@ const SingleLocation = () => {
     const locationArray = Object.values(location).filter(location => {
         return +location.id === +id
     });
-    // console.log(locationArray, 'testArr')
+    console.log(locationArray, 'testArr')
     
-    const bookingsArray = Object.values(bookings).filter(booking => booking.locationId === locationArray[0]?.id).map(booking => booking.bookingDate);
+    const bookingsArray = Object.values(bookings).filter(booking => booking.locationId === +id).map(booking => booking.bookingDate);
     console.log(bookingsArray, 'array')
-
-
+    
     const imagesArray= images.image
 
     const getlocation = () => {
@@ -80,7 +78,6 @@ const SingleLocation = () => {
                         placeholder='Booking date'
                         className='booking-form-input'
                     ></input>
-                    <BookingCalender bookings={bookingsArray} clickable={true}/>
                     <input
                         type='text'
                         placeholder='Number of clients'
