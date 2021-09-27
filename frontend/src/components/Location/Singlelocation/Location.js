@@ -77,6 +77,7 @@ const SingleLocation = () => {
                         type='date'
                         placeholder='Booking date'
                         className='booking-form-input'
+                        
                     ></input>
                     <input
                         type='text'
