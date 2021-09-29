@@ -65,7 +65,7 @@ const LocationsInState = ({isLoaded}) => {
         dispatch(locationActions.findPlacesByState(stateName))  
         dispatch(imageActions.findImages()) 
         dispatch(sessionActions.restoreUser())   
-    }, [dispatch])
+    }, [dispatch,stateName])
 
     return (
         <div className='hair-spots-div'>

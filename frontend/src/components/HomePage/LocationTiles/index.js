@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import { Link, useParams } from 'react-router-dom'
+import React, {useEffect} from 'react';
+import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 
 // import { useHistory } from 'react-router';
@@ -13,7 +13,6 @@ const LocationTiles = () => {
     const dispatch = useDispatch();
     const locations = useSelector(state => state.location)
     const images = useSelector(state => state.image);
-    const {stateName} = useParams();//this is the State as in Nebraska etc
    
     
     const locationsArray = Object.values(locations);
@@ -66,7 +65,7 @@ const LocationTiles = () => {
                     {/* <Link to={(e) => setPath(e.target)}> */}
 
                         <div className='tile-image'>
-                                <img src={location.image.url} alt='image' className='tile-image-pic'/>
+                                <img src={location.image.url} alt={location.image} className='tile-image-pic'/>
                         </div>
                         {location?.state}
                     </Link>

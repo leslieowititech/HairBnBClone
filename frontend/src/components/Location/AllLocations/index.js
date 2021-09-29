@@ -65,7 +65,7 @@ const AllLocations = () => {
                         <div className='hair-spot-img all-locations-img'>
                             {location.image && 
                             
-                            <img src={location.image?.url} alt={location.image?.url} className='tile-image-pic' />
+                            <img src={location.image?.url} alt={location.image.url} className='tile-image-pic' />
                             }
                         </div>
                     </Link>
