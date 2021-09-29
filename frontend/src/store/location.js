@@ -72,7 +72,6 @@ const locationReducer = (state = initialState, action) => {
 }
 
 export const createAPlace = (payload) => async dispatch => {
-    console.log(payload, '____________payloadhere')
     const response = await csrfFetch('/api/locations/new', {
         method: 'POST',
         headers: {
@@ -85,8 +84,8 @@ export const createAPlace = (payload) => async dispatch => {
             state: payload.state,
             country: payload.country,
             city: payload.city,
-            userId: +payload.userId,
-            capacity: 10//dont know why i cant access capacity
+            userId: payload.userId,
+            capacity: payload.capacity
         })
     })
     

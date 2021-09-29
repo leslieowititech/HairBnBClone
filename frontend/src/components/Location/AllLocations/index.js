@@ -13,7 +13,6 @@ const AllLocations = () => {
     const locationsArray = Object.values(locations);
     const imagesArray = images.image;
     const user = useSelector(state => state.session.user);
-    // console.log(images, 'images')
 
     const renderEditDelete = (state, id) => {
         const handleDelete = async () => {
@@ -30,7 +29,6 @@ const AllLocations = () => {
 
     const getlocation = () => {
         let locations = []
-
         for (let i = 0; i < locationsArray.length; i++) {//pair a location with an image
             let location = locationsArray[i];
             for (let j = 0; j < imagesArray?.length; j++) {
@@ -45,25 +43,30 @@ const AllLocations = () => {
                 }
             }
         }
+        
         return locations;
     }
 
     const locationsWithimages = getlocation();
 
-
     useEffect(() => {
-        dispatch(locationActions.findPlaces())
+            dispatch(locationActions.findPlaces())
+    },[dispatch])
+    useEffect(() => {
         dispatch(imageActions.findImages())
     },[dispatch])
 
     return (
         <div className='hair-spots-div'>
-            {locationsWithimages.map(location => (
+            {locationsWithimages.map((location, indx) => (
                 
-                    <div className='hair-spot' key={location.id}>
+                    <div className='hair-spot' key={indx}>
                     <Link to={`/locations/${location.state}/${location.id}`} >
                         <div className='hair-spot-img all-locations-img'>
-                            <img src={location.image.url} alt={location.image.url} className='tile-image-pic' />
+                            {location.image && 
+                            
+                            <img src={location.image?.url} alt={location.image?.url} className='tile-image-pic' />
+                            }
                         </div>
                     </Link>
                         <div>
