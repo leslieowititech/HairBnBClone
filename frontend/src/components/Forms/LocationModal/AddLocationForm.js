@@ -37,9 +37,9 @@ const AddLocationForm = () => {
          if(!user){
             alert('Please login or signup')
         }else{
-
+            
             const data = await dispatch(createAPlace(payload))
-            console.log(data, 'Data')
+            // console.log(data, 'Data')
             if(data.errors){
                 console.log(data.errors, 'Errors')
                 setErrors(data.errors)

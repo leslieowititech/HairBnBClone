@@ -14,9 +14,10 @@ const LocationTiles = () => {
     const locations = useSelector(state => state.location)
     const images = useSelector(state => state.image);
    
-    
-    const locationsArray = Object.values(locations);
-    const imagesArray = images.image;
+    console.log(locations, 'testing______')
+    console.log(images, 'images____')
+    // const locationsArray = locations;
+    // const imagesArray = images;
 
    
     // const redirectToSatePage = (location) => {
@@ -25,29 +26,29 @@ const LocationTiles = () => {
    
     
     const getlocation = () => {
-        let locations = []
+        let res = []
 
-        for (let i = 0; i < locationsArray.length; i++) {//pair a location with an image
-            let location = locationsArray[i];
 
-            
-            for (let j = 0; j < imagesArray?.length; j++) {
-                let image = imagesArray[j];
+        for (let i = 0; i < locations?.length; i++) {//pair a location with an image
+            let location = locations[i];
+            for (let j = 0; j < images?.length; j++) {
+                let image = images[j];
 
                 if (image.locationId === location.id) {                 
                     
-                    if(!locations.includes(location)){
+                    if(!res.includes(location)){
                         location.image = image
-                        locations.push(location)
+                        res.push(location)
                     }
                 }
             }
         }
-        return locations;
+
+        return res;
     }
 
     const locationsWithimages = getlocation();
-        
+
         useEffect(() => {           
             dispatch(locationActions.findPlaces())
             dispatch(imageActions.findImages())           
@@ -62,8 +63,6 @@ const LocationTiles = () => {
                 {locationsWithimages.map(location => (
                 <li key={location?.id}>                 
                         <Link to={`/locations/${location.state}`}> 
-                    {/* <Link to={(e) => setPath(e.target)}> */}
-
                         <div className='tile-image'>
                                 <img src={location.image.url} alt={location.image} className='tile-image-pic'/>
                         </div>

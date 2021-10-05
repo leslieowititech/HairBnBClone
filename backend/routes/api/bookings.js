@@ -11,4 +11,15 @@ router.get('/', asyncHandler(async (req, res) => {
 
 }))
 
+router.post('/new', asyncHandler(async (req, res) => {
+        const {locationId, userId, bookingDate} = req.body
+        const booking = Booking.create({
+                locationId,
+                userId,
+                bookingDate
+        })
+
+        return res.json(booking)
+}))
+
 module.exports = router;

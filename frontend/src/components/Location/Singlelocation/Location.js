@@ -18,7 +18,7 @@ const SingleLocation = () => {
     const locationArray = Object.values(location).filter(location => {
         return +location.id === +id
     });
-    console.log(locationArray, 'testArr')
+    // console.log(locationArray, 'testArr')
     
     const bookingsArray = Object.values(bookings).filter(booking => booking.locationId === +id).map(booking => booking.bookingDate);
     console.log(bookingsArray, 'array')
@@ -43,7 +43,19 @@ const SingleLocation = () => {
             }
         }
         return locations;
-    }   
+    }  
+    
+    const handleBooking = (e) => {
+        e.preventDefault()
+        console.log(user, 'user')
+        if(!user){
+            alert('Please log in to be able to book')
+        }else{
+            if(locationArray.length){
+                console.log(locationArray[0], 'location')
+            }
+        }
+    }
 
     const locationsWithimages = getlocation();
 
@@ -85,7 +97,7 @@ const SingleLocation = () => {
                         className='booking-form-input'
                         //test
                     ></input>
-                    <button type='submit' className='booking-form-button'>Check Availability</button>
+                    <button type='submit' className='booking-form-button' onClick={handleBooking}>Check Availability</button>
                 </form>
             </div>
         </div>
