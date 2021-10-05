@@ -13,15 +13,14 @@ const router = express.Router();
 
 const validateAddSpot = [
     check('name')
-        .exists({ checkFalsy: true })
-        .isLength({ min: 1 })
-        .withMessage('Enter at least one character for the name'),
+      .exists({ checkFalsy: true })
+      .withMessage('Enter at least one character for the name'),
     check('price')
-        .exists({ checkFalsy: true })
-        .withMessage('Price cannot be empty'),
+      .exists({ checkFalsy: true })
+      .withMessage('Price cannot be empty'),
     handleValidationErrors,
 
-]
+];
 
 router.get('/', asyncHandler( async (req,res) => {
     const locations = await Location.findAll();
@@ -67,7 +66,11 @@ router.get('/:state', asyncHandler(async (req,res) => {//state matching
     )
 }))
 
-router.post('/new', csrfProtection, validateAddSpot,  asyncHandler(async (req, res) => {
+router.post(
+    '/new',
+    csrfProtection, 
+    validateAddSpot,  
+    asyncHandler(async (req, res) => {
     const {name, address, price, state, country, city, userId, capacity} = req.body;
     const location = await Location.create({
         name,
