@@ -10,13 +10,11 @@ const AllLocations = () => {
     const dispatch = useDispatch();
     const locations = useSelector(state => state.location);
     const images = useSelector(state => state.image)
-    const locationsArray = Object.values(locations);
-    const imagesArray = images.image;
     const user = useSelector(state => state.session.user);
 
-    const renderEditDelete = (state, id) => {
+    const renderEditDelete = (state, id, index) => {
         const handleDelete = async () => {
-            await dispatch(locationActions.deleteAPlace(state, id))
+            await dispatch(locationActions.deleteAPlace(state, id, index))
             
         }
         return (
@@ -27,27 +25,27 @@ const AllLocations = () => {
         )
     }
 
-    const getlocation = () => {
-        let locations = []
-        for (let i = 0; i < locationsArray.length; i++) {//pair a location with an image
-            let location = locationsArray[i];
-            for (let j = 0; j < imagesArray?.length; j++) {
-                let image = imagesArray[j];
+    const addImages = () => {
+        let res = []
+        for (let i = 0; i < locations.length; i++) {//pair a location with an image
+            let location = locations[i];
+            for (let j = 0; j < images?.length; j++) {
+                let image = images[j];
 
                 if (image.locationId === location.id) {
 
-                    if (!locations.includes(location)) {
+                    if (!res.includes(location)) {
                         location.image = image
-                        locations.push(location)
+                        res.push(location)
                     }
                 }
             }
         }
-        
-        return locations;
+        // console.log(res, 'here')
+        return res;
     }
 
-    const locationsWithimages = getlocation();
+    const locationsWithimages = addImages();
 
     useEffect(() => {
             dispatch(locationActions.findPlaces())
@@ -65,14 +63,14 @@ const AllLocations = () => {
                         <div className='hair-spot-img all-locations-img'>
                             {location.image && 
                             
-                            <img src={location.image?.url} alt={location.image?.url} className='tile-image-pic' />
+                            <img src={location.image?.url} alt={location.image.url} className='tile-image-pic' />
                             }
                         </div>
                     </Link>
                         <div>
                             {location.name}
                             {`$${location.price} `}
-                            {location.userId === user?.id ? renderEditDelete(location.state, location.id) : null}
+                        {location.userId === user?.id ? renderEditDelete(location.state, location.id, indx) : null}
                         </div>
                     </div>
                 

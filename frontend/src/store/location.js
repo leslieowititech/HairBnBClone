@@ -21,10 +21,10 @@ const getLocation = (location) => {
     };
 };
 
-const deleteLocation = (id) => {
+const deleteLocation = (index) => {
     return {
         type: DELETE_LOCATION,
-        locationId: id
+        payload: index
     }
 }
 
@@ -35,30 +35,25 @@ const updateLoaction = (location) => {
     }
 }
 
-const initialState = { } //initial state
+const initialState = [] //initial state
 
 const locationReducer = (state = initialState, action) => {
     let newState;
     switch(action.type) {
         case GET_LOCATION:
-            // console.log(action.payload, 'payloadGet')
-            
-                newState = {...state}
-                action.payload.forEach(location => {
-                newState[location.id] = location
-            })
-            return {
-                ...state, ...newState
-            }
+                newState = [ ...action.payload]
+            return newState
        
         case DELETE_LOCATION:  
                 newState = {...state}   
-                delete newState[action.locationId]
+                newState.splice(action.payload,1)
                 return newState;
             
         case CREATE_LOCATION:
+            console.log(state, 'statehere__________-0000')
                 newState = {...state}
                 newState[action.payload?.id] = action.payload
+                newState = Object.values(newState)
                 return newState;
         case UPDATE_LOCATION:
             return {
@@ -101,13 +96,13 @@ export const createAPlace = (payload) => async dispatch => {
     }
 }
 
-export const deleteAPlace = (state, id) =>  async dispatch => {
+export const deleteAPlace = (state, id, index) =>  async dispatch => {
     const response = await csrfFetch(`/api/locations/${state}/${id}`, {
         method: 'DELETE'
     })
 
     if(response.ok){
-        await dispatch(deleteLocation(id))
+        await dispatch(deleteLocation(index))
         return response
     }
 }

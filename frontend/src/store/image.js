@@ -34,7 +34,7 @@ const imageReducer = (state = initialState, action) => {
     switch(action.type) {
         case GET_IMAGE:{
             newState = {...state};
-            newState.image = action.payload
+            newState = action.payload
             return newState
         }
         case CREATE_IMAGE:

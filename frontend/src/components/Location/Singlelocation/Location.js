@@ -12,40 +12,51 @@ const SingleLocation = () => {
     const {stateName, id} = useParams();
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user)
-    const location = useSelector(state => state.location);
+    const locations = useSelector(state => state.location);
     const bookings = useSelector(state => state.booking);
     const images = useSelector(state => state.image);
-    const locationArray = Object.values(location).filter(location => {
+    const locationArray = Object.values(locations).filter(location => {
         return +location.id === +id
     });
-    console.log(locationArray, 'testArr')
+    // console.log(locationArray, 'testArr')
     
     const bookingsArray = Object.values(bookings).filter(booking => booking.locationId === +id).map(booking => booking.bookingDate);
     console.log(bookingsArray, 'array')
     
-    const imagesArray= images.image
 
-    const getlocation = () => {
-        let locations = []
-
-        for (let i = 0; i < locationArray.length; i++) {//pair a location with an image
-            let location = locationArray[i];
-            for (let j = 0; j < imagesArray?.length; j++) {
-                let image = imagesArray[j];
+    const addImages = () => {
+        let res = []
+        for (let i = 0; i < locations.length; i++) {//pair a location with an image
+            let location = locations[i];
+            for (let j = 0; j < images?.length; j++) {
+                let image = images[j];
 
                 if (image.locationId === location.id) {
 
-                    if (!locations.includes(location)) {
+                    if (!res.includes(location)) {
                         location.image = image
-                        locations.push(location)
+                        res.push(location)
                     }
                 }
             }
         }
-        return locations;
-    }   
+        // console.log(res, 'here')
+        return res;
+    }
+    
+    const handleBooking = (e) => {
+        e.preventDefault()
+        console.log(user, 'user')
+        if(!user){
+            alert('Please log in to be able to book')
+        }else{
+            if(locationArray.length){
+                console.log(locationArray[0], 'location')
+            }
+        }
+    }
 
-    const locationsWithimages = getlocation();
+    const locationsWithimages = addImages();
 
     useEffect(() => {
         dispatch(locationActions.findOnePlace(stateName , id))
@@ -85,7 +96,7 @@ const SingleLocation = () => {
                         className='booking-form-input'
                         //test
                     ></input>
-                    <button type='submit' className='booking-form-button'>Check Availability</button>
+                    <button type='submit' className='booking-form-button' onClick={handleBooking}>Check Availability</button>
                 </form>
             </div>
         </div>
