@@ -16,7 +16,7 @@ const AddLocationForm = () => {
     const [price, setPrice] = useState(0);
     const [errors, setErrors] = useState([]);
     const [imageUrl, setImageUrl] = useState('');
-    const [capacity, setCapacity] = useState();
+    const [capacity, setCapacity] = useState(0);
 
     // const imgRegex = /(https:\/\/)([^\s(["<,>/]*)(\/)[^\s[",><]*(.png|.jpg)(\?[^\s[",><]*)?/g
 
@@ -29,7 +29,7 @@ const AddLocationForm = () => {
         price,
         userId: user?.id,
         url: imageUrl,
-        capacity: capacity,
+        capacity,
     }
     
     const handleSubmit = async (e) => {

@@ -35,16 +35,13 @@ const updateLoaction = (location) => {
     }
 }
 
-const initialState = { } //initial state
+const initialState = [] //initial state
 
 const locationReducer = (state = initialState, action) => {
     let newState;
     switch(action.type) {
         case GET_LOCATION:
-            // console.log(action.payload, 'payloadGet')
-            
-                // newState = {...state}
-                newState = action.payload
+                newState = [ ...action.payload]
             return newState
        
         case DELETE_LOCATION:  
@@ -55,6 +52,7 @@ const locationReducer = (state = initialState, action) => {
         case CREATE_LOCATION:
                 newState = {...state}
                 newState[action.payload?.id] = action.payload
+                newState = Object.values(newState)
                 return newState;
         case UPDATE_LOCATION:
             return {

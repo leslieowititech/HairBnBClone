@@ -8,18 +8,18 @@ import * as imageActions from '../../../store/image';
 import * as sessionActions from '../../../store/session';
 import './LocationsInState.css';
 
-const LocationsInState = ({isLoaded}) => {
+const LocationsInState = () => {
     const { stateName }= useParams();
     const dispatch = useDispatch();
 
-    const locations = useSelector(state => state.location);
-    const images = useSelector(state => state.image)
-    const locationsArray = Object.values(locations).filter(location => {
+    const locations = useSelector(state => state.location).filter(location => {
         return location.state === stateName
-    })
-    const imagesArray = images.image;
+    });
+    console.log(stateName, 'stateName_____')
+    console.log(locations, 'locationsinstate_______0000')
+    const images = useSelector(state => state.image)
+    
     const user = useSelector(state => state.session.user);
-    // console.log(user.id, 'userid')
 
     const renderEditDelete = (state, id) => {
         const handleDelete = () => {
@@ -38,27 +38,27 @@ const LocationsInState = ({isLoaded}) => {
     
     
 
-    const getlocation = () => {
-        let locations = []
+    const addImages = () => {
+        let res = []
+        for (let i = 0; i < locations.length; i++) {//pair a location with an image
+            let location = locations[i];
+            for (let j = 0; j < images?.length; j++) {
+                let image = images[j];
 
-        for (let i = 0; i < locationsArray.length; i++) {//pair a location with an image
-            let location = locationsArray[i];
-            for (let j = 0; j < imagesArray?.length; j++) {
-                let image = imagesArray[j];
+                if (image.locationId === location?.id) {
 
-                if (image.locationId === location.id) {
-
-                    if (!locations.includes(location)) {
+                    if (!res.includes(location)) {
                         location.image = image
-                        locations.push(location)
+                        res.push(location)
                     }
                 }
             }
         }
-        return locations;
+        // console.log(res, 'here')
+        return res;
     }
 
-    const locationsWithimages = getlocation();
+    const locationsWithimages = addImages();
    
   
     useEffect(() => {
