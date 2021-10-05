@@ -10,8 +10,6 @@ const AllLocations = () => {
     const dispatch = useDispatch();
     const locations = useSelector(state => state.location);
     const images = useSelector(state => state.image)
-    // const locationsArray = Object.values(locations);
-    // const imagesArray = images;
     const user = useSelector(state => state.session.user);
 
     const renderEditDelete = (state, id, index) => {

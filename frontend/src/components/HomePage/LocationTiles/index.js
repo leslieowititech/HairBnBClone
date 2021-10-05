@@ -2,30 +2,20 @@ import React, {useEffect} from 'react';
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 
-// import { useHistory } from 'react-router';
 import * as locationActions from '../../../store/location';
 import * as imageActions from '../../../store/image';
 
 import './LocationTiles.css'
 
 const LocationTiles = () => {
-    // const history = useHistory()
     const dispatch = useDispatch();
     const locations = useSelector(state => state.location)
     const images = useSelector(state => state.image);
    
-    console.log(locations, 'testing______')
-    console.log(images, 'images____')
-    // const locationsArray = locations;
-    // const imagesArray = images;
-
-   
-    // const redirectToSatePage = (location) => {
-    //     return history.push(`/locations/${location.state}`)
-    // }
+  
    
     
-    const getlocation = () => {
+    const addImages = () => {
         let res = []
 
 
@@ -47,7 +37,7 @@ const LocationTiles = () => {
         return res;
     }
 
-    const locationsWithimages = getlocation();
+    const locationsWithimages = addImages();
 
         useEffect(() => {           
             dispatch(locationActions.findPlaces())
