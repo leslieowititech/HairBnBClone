@@ -15,8 +15,7 @@ const LocationsInState = () => {
     const locations = useSelector(state => state.location).filter(location => {
         return location.state === stateName
     });
-    console.log(stateName, 'stateName_____')
-    console.log(locations, 'locationsinstate_______0000')
+    
     const images = useSelector(state => state.image)
     
     const user = useSelector(state => state.session.user);

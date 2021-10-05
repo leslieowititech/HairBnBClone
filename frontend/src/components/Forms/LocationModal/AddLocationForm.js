@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { createAPlace } from '../../../store/location';
+import { createAPlace} from '../../../store/location';
 import './AddLocation.css';
 
 
 const AddLocationForm = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user)
+    // const test = useSelector(state => console.log(state, 'statehere___________000'))
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
@@ -38,10 +39,13 @@ const AddLocationForm = () => {
             alert('Please login or signup')
         }else{
             
+            //  const data = await Promise.all([dispatch(createAPlace(payload)), dispatch(findPlaces())])
             const data = await dispatch(createAPlace(payload))
-            // console.log(data, 'Data')
+            // window.location.reload()
+            
             if(data.errors){
-                console.log(data.errors, 'Errors')
+                console.log('here_________0000__there is an error')
+                console.log(data.errors, 'errors_________000')
                 setErrors(data.errors)
             }
         }
@@ -53,7 +57,10 @@ const AddLocationForm = () => {
         <>
         <ul>
             {errors?.map((err, index)=> (
-                <li key={index}>{err.msg}</li>
+                <>
+                <li>Error</li>
+                <li key={index}>{err}</li>
+                </>
             ))}
         </ul>
         <h3 className='add-a-spot-form-header'>Lets add your Spot!</h3>

@@ -14,7 +14,7 @@ import configureStore from './store';
 import * as sessionActions from './store/session';
 
 //import fonts
-import './fonts/AirbnbCerealBlack.ttf';
+// import './fonts/AirbnbCerealBlack.ttf';
 // import './fonts/AirbnbCerealBold.tff';
 // import './fonts/AirbnbCerealBook.tff';
 // import './fonts/AirbnbCerealExtraBold.tff';

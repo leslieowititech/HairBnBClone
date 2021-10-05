@@ -50,6 +50,7 @@ const locationReducer = (state = initialState, action) => {
                 return newState;
             
         case CREATE_LOCATION:
+            console.log(state, 'statehere__________-0000')
                 newState = {...state}
                 newState[action.payload?.id] = action.payload
                 newState = Object.values(newState)
