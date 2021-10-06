@@ -23,10 +23,7 @@ const validateAddSpot = [
 ];
 
 router.get('/', asyncHandler( async (req,res) => {
-    const locations = await Location.findAll();
-    // const images = await Image.findAll();    
-    // console.log(locations, 'locationshere')
-
+    const locations = await Location.findAll({ include: Image} );
     return res.json(
         locations  
        );
@@ -47,8 +44,10 @@ router.put('/:state/;id')
 
 router.delete('/:state/:id(\\d+)', asyncHandler(async(req, res) => {//delete a location
     const {id} = req.params
-    const location = await Location.findOne({ where: {id: id}})
+    const location = await Location.findOne({ where: {id: id}, include: Image})
+    const image = await Image.findOne({ where: {locationId: location.id}})
     await location.destroy()
+    await image.destroy()
     
 }))
 
@@ -57,7 +56,8 @@ router.get('/:state', asyncHandler(async (req,res) => {//state matching
     const {state} = req.params
   
     const locations = await Location.findAll({
-        where: {state: state}
+        where: {state: state},
+        include: Image
     })  
     // console.log(locations)
 
