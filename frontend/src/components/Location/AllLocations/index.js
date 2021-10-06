@@ -11,9 +11,9 @@ const AllLocations = () => {
     const user = useSelector(state => state.session.user);
 
 
-    const renderEditDelete = (state, id, index) => {
+    const renderEditDelete = (state, id, location) => {
         const handleDelete = async () => {
-            await dispatch(locationActions.deleteAPlace(state, id, index))
+            await dispatch(locationActions.deleteAPlace(state, id, location))
             
         }
         return (
@@ -59,7 +59,7 @@ const AllLocations = () => {
                         <div>
                             {location.name}
                             {`$${location.price} `}
-                        {location.userId === user?.id ? renderEditDelete(location.state, location.id, indx) : null}
+                        {location.userId === user?.id ? renderEditDelete(location.state, location.id, location) : null}
                         </div>
                     </div>
                 

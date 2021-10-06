@@ -13,16 +13,6 @@ router.get('/', asyncHandler(async (req, res) => {
     );
 }));
 
-router.post('/new', asyncHandler(async (req, res) => {
-    const {url, locationId} = req.body
-    const image = await Image.create({
-        url,
-        locationId
-    })
 
-    return res.json(
-        image
-    )
-}))
 
 module.exports = router;

@@ -21,10 +21,10 @@ const getLocation = (location) => {
     };
 };
 
-const deleteLocation = (index) => {
+const deleteLocation = (location) => {
     return {
         type: DELETE_LOCATION,
-        payload: index
+        payload: location
     }
 }
 
@@ -44,13 +44,13 @@ const locationReducer = (state = initialState, action) => {
                 newState = [ ...action.payload]
             return newState
        
-        case DELETE_LOCATION:  
-                newState = {...state}   
-                newState.splice(action.payload,1)
+        case DELETE_LOCATION: 
+                console.log('deletehitinghere______________0000') 
+                newState = [...state]
+                newState = newState.filter(location => location.id !== action.payload.id)
                 return newState;
             
         case CREATE_LOCATION:
-            console.log(state, 'statehere__________-0000')
                 newState = {...state}
                 newState[action.payload?.id] = action.payload
                 newState = Object.values(newState)
@@ -80,29 +80,29 @@ export const createAPlace = (payload) => async dispatch => {
             country: payload.country,
             city: payload.city,
             userId: payload.userId,
-            capacity: payload.capacity
+            capacity: payload.capacity,
+            url: payload.url
         })
     })
     
 
     if (response.ok) {
         const data = await response.json()
-        let imagePayload = {}
-        imagePayload.url = payload.url
-        imagePayload.locationId = data.id
-        await Promise.all([dispatch(createAnImage(imagePayload)), dispatch(createLocation(data))])
+        await dispatch(createLocation(data))
         
         return response;
     }
 }
 
-export const deleteAPlace = (state, id, index) =>  async dispatch => {
+export const deleteAPlace = (state, id, location) =>  async dispatch => {
+    console.log(location, '_______________maybehithere')
     const response = await csrfFetch(`/api/locations/${state}/${id}`, {
         method: 'DELETE'
     })
-
+    console.log(location, '__________herebeore_________0000')
     if(response.ok){
-        await dispatch(deleteLocation(index))
+        console.log(location, '__________hereAFTER_________0000')
+        await dispatch(deleteLocation(location))
         return response
     }
 }

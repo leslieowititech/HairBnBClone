@@ -42,12 +42,16 @@ router.get('/:state/:id', asyncHandler( async (req, res) => {//id matching
 router.put('/:state/;id')
 
 
-router.delete('/:state/:id(\\d+)', asyncHandler(async(req, res) => {//delete a location
+router.delete('/:state/:id', asyncHandler(async(req, res) => {//delete a location
     const {id} = req.params
-    const location = await Location.findOne({ where: {id: id}, include: Image})
-    const image = await Image.findOne({ where: {locationId: location.id}})
+    const location = await Location.findOne({ where: { id: id }, 
+                                                include: {
+                                                    model: Image,
+                                                    where: {
+                                                        locationId: id
+                                                    }
+                                                }})
     await location.destroy()
-    await image.destroy()
     
 }))
 
@@ -71,7 +75,7 @@ router.post(
     csrfProtection, 
     validateAddSpot,  
     asyncHandler(async (req, res) => {
-    const {name, address, price, state, country, city, userId, capacity} = req.body;
+    const {name, address, price, state, country, city, userId, capacity, url} = req.body;
     const location = await Location.create({
         name,
         address,
@@ -83,6 +87,11 @@ router.post(
         lat: faker.address.latitude(),
         lng: faker.address.longitude(),
         capacity
+    })
+
+    const image = await Image.create({
+        url,
+        locationId: location.id
     })
 
    

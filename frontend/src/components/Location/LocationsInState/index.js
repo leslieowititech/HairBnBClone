@@ -13,13 +13,12 @@ const LocationsInState = () => {
     const locations = useSelector(state => state.location).filter(location => {
         return location.state === stateName
     });
-    console.log(locations, 'statelocations________________00')
     
     const user = useSelector(state => state.session.user);
 
-    const renderEditDelete = (state, id) => {
+    const renderEditDelete = (state, id, location) => {
         const handleDelete = () => {
-            dispatch(locationActions.deleteAPlace(state, id))
+            dispatch(locationActions.deleteAPlace(state, id, location))
         }
         return (
             <div className='edit-and-delete-buttons-div'>
@@ -70,7 +69,7 @@ const LocationsInState = () => {
                             <div>
                                 {location.name}
                                 {`$${location.price} `}
-                                {location.userId === user?.id ? renderEditDelete(location.state, location.id) : null}
+                                {location.userId === user?.id ? renderEditDelete(location.state, location.id, location) : null}
                             </div>                       
                        
                         </div>
