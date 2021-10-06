@@ -52,6 +52,10 @@ router.delete('/:state/:id', asyncHandler(async(req, res) => {//delete a locatio
                                                     }
                                                 }})
     await location.destroy()
+
+    return res.json(
+        'Location deleted'
+    )
     
 }))
 
