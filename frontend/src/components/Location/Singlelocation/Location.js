@@ -62,7 +62,7 @@ const SingleLocation = () => {
         dispatch(locationActions.findOnePlace(stateName , id))
         dispatch(imageActions.findImages())
         dispatch(findBookings())
-    },[dispatch])
+    },[dispatch, id, stateName])
 
     
     return (
