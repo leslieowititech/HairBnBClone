@@ -21,7 +21,7 @@ const SingleLocation = () => {
     // console.log(locationArray, 'testArr')
     
     const bookingsArray = Object.values(bookings).filter(booking => booking.locationId === +id).map(booking => booking.bookingDate);
-    console.log(bookingsArray, 'array')
+    // console.log(bookingsArray, 'array')
     
 
     const addImages = () => {
@@ -57,6 +57,8 @@ const SingleLocation = () => {
     }
 
     const locationsWithimages = addImages();
+    let date = new Date()
+    const [year,month,day] = [date.getFullYear(), date.getMonth(), date.getDay()]
 
     useEffect(() => {
         dispatch(locationActions.findOnePlace(stateName , id))
@@ -86,6 +88,7 @@ const SingleLocation = () => {
                     <h2 className='booking-form-price'> Price ${locationsWithimages.map(location => location.price)}</h2>
                     <input
                         type='date'
+                        min= {`${year}-${month}-${day}`}
                         placeholder='Booking date'
                         className='booking-form-input'
                         
