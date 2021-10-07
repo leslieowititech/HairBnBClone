@@ -44,8 +44,7 @@ const AddLocationForm = () => {
             // window.location.reload()
             
             if(data.errors){
-                console.log('here_________0000__there is an error')
-                console.log(data.errors, 'errors_________000')
+              
                 setErrors(data.errors)
             }
         }
