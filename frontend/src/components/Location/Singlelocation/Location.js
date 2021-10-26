@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 
@@ -7,6 +7,7 @@ import * as locationActions from '../../../store/location';
 import * as imageActions from '../../../store/image';
 import './SingleLocation.css';
 import { findBookings } from '../../../store/booking';
+import { createABooking } from '../../../store/booking';
 
 const SingleLocation = () => {
     const {stateName, id} = useParams();
@@ -43,8 +44,10 @@ const SingleLocation = () => {
         // console.log(res, 'here')
         return res;
     }
+    const [clickedMakeBooking, setClickedMakeBooking] = useState(false)
+    const [bookingDate, setBookingDate] = useState()
     
-    const handleBooking = (e) => {
+    const handleBookingAvailability = (e) => {
         e.preventDefault()
         // console.log(user, 'user')
         if(!user){
@@ -53,6 +56,15 @@ const SingleLocation = () => {
             if(locationArray.length){
                 let [thisLocation] = locationArray
                 alert(`This spot has ${thisLocation.capacity} slots available`)
+
+                if(clickedMakeBooking){
+                    const bookingPayload = {
+                        locationId: thisLocation.id,
+                        userId: user.id,
+                        bookingDate: bookingDate
+                    }
+                    dispatch(createABooking(bookingPayload))
+                }
             }
         }
     }
@@ -100,7 +112,7 @@ const SingleLocation = () => {
                         className='booking-form-input'
                         //test
                     ></input>
-                    <button type='button' className='booking-form-button' onClick={handleBooking}>Check Availability</button>
+                    <button type='button' className='booking-form-button' onClick={handleBookingAvailability}>Check Availability</button>
                     <button type='submit' className='booking-form-button' >Book this spot</button>
                 </form>
             </div>
