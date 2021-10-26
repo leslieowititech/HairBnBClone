@@ -46,12 +46,13 @@ const SingleLocation = () => {
     
     const handleBooking = (e) => {
         e.preventDefault()
-        console.log(user, 'user')
+        // console.log(user, 'user')
         if(!user){
             alert('Please log in to be able to book')
         }else{
             if(locationArray.length){
-                console.log(locationArray[0], 'location')
+                let [thisLocation] = locationArray
+                alert(`This spot has ${thisLocation.capacity} slots available`)
             }
         }
     }
@@ -99,7 +100,8 @@ const SingleLocation = () => {
                         className='booking-form-input'
                         //test
                     ></input>
-                    <button type='submit' className='booking-form-button' onClick={handleBooking}>Check Availability</button>
+                    <button type='button' className='booking-form-button' onClick={handleBooking}>Check Availability</button>
+                    <button type='submit' className='booking-form-button' >Book this spot</button>
                 </form>
             </div>
         </div>
