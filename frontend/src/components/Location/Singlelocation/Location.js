@@ -113,7 +113,7 @@ const SingleLocation = () => {
                         //test
                     ></input>
                     <button type='button' className='booking-form-button' onClick={handleBookingAvailability}>Check Availability</button>
-                    <button type='submit' className='booking-form-button' >Book this spot</button>
+                    {/* <button type='submit' className='booking-form-button' >Book this spot</button> */}
                 </form>
             </div>
         </div>
