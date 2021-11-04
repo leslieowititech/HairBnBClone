@@ -45,7 +45,6 @@ const locationReducer = (state = initialState, action) => {
             return newState
        
         case DELETE_LOCATION: 
-                console.log('deletehitinghere______________0000') 
                 newState = [...state]
                 newState = newState.filter(location => location.id !== action.payload.id)
                 return newState;
@@ -95,18 +94,38 @@ export const createAPlace = (payload) => async dispatch => {
 }
 
 export const deleteAPlace = (state, id, location) =>  async dispatch => {
-    console.log(location, '_______________maybehithere')
     const response = await csrfFetch(`/api/locations/${state}/${id}`, {
         method: 'DELETE'
     })
-    console.log(location, '__________herebeore_________0000')
     if(response.ok){
-        console.log(location, '__________hereAFTER_________0000')
         await dispatch(deleteLocation(location))
         return response
     }
 }
+export const editLocation = (state,id, payload) => async dispatch => {
+    const response = await csrfFetch(`/api/locations/${state}/${id}`,{
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name: payload.name,
+            address: payload.address,
+            price: payload.price,
+            state: payload.state,
+            country: payload.country,
+            city: payload.city,
+            userId: payload.userId,
+            capacity: payload.capacity,
+            url: payload.url
+        })
+    })
 
+    if(response.ok){
+        const data = await response.json()
+        await dispatch(updateLoaction(data))
+    }
+}
 export const findPlaces = () => async dispatch => {
     const response = await csrfFetch('/api/locations')
     const data = await response.json();  
@@ -140,15 +159,15 @@ export const findOnePlace = (state,id) => async dispatch => {
 }
 
 
-export const updtaetOneLocation = () => async dispatch => {
-    const response = await csrfFetch('/api/locations/:state/:id')
-    const data = await response.json()
+// export const updtaetOneLocation = () => async dispatch => {
+//     const response = await csrfFetch('/api/locations/:state/:id')
+//     const data = await response.json()
 
 
-    if (response.ok) {
-        await dispatch(updateLoaction(data))
-        return response;
-    }
-}
+//     if (response.ok) {
+//         await dispatch(updateLoaction(data))
+//         return response;
+//     }
+// }
 
 export default locationReducer;

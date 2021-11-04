@@ -98,11 +98,35 @@ router.post(
         locationId: location.id
     })
 
-   
+    await image.save()
+    await location.save()
 
     return res.json(
         location
     )
+}))
+
+router.put('/locations/:state/:id', csrfProtection,asyncHandler(async (req, res)=> {
+    // const {state, id} = req.params;
+    const { name, address, price, state, country, city, userId, capacity, url } = req.body;
+
+    const location = await Location.create({
+        name,
+        address,
+        price,
+        state,
+        country,
+        userId,
+        city,
+        lat: faker.address.latitude(),
+        lng: faker.address.longitude(),
+        capacity
+    })
+
+    const image = await Image.create({
+        url,
+        locationId: location.id
+    })
 }))
 
 module.exports = router;
