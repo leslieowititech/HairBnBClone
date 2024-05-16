@@ -13,10 +13,15 @@ const app = express();
 app.use(morgan("dev"));
 app.use(cookieParser());
 app.use(express.json());
+const corsOptions = {
+  origin: "http://localhost:3000", // Replace with the origin of your frontend application
+  credentials: true, // This is required to allow sending cookies in cross-origin requests
+  optionsSuccessStatus: 200, // Some legacy browsers (IE11, various SmartTVs) choke on 204
+};
 // Security Middleware
 if (!isProduction) {
   // enable cors only in development
-  app.use(cors());
+  app.use(cors(corsOptions));
 }
 // helmet helps set a variety of headers to better secure your app
 app.use(

@@ -15,24 +15,25 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "cookie-parser": "^1.4.5",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "csurf": "^1.11.0",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "express-async-handler": "^1.1.4",
-    "express-validator": "^6.12.0",
-    "faker": "^5.5.3",
-    "helmet": "^4.6.0",
-    "jsonwebtoken": "^8.5.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-async-handler": "^1.2.0",
+    "express-validator": "^7.0.1",
+    "faker": "^6.6.6",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
     "per-env": "^1.0.2",
-    "pg": "^8.6.0",
-    "sequelize": "^5.22.4",
-    "sequelize-cli": "^5.5.1"
+    "pg": "^8.11.5",
+    "sequelize": "^6.37.3",
+    "sequelize-cli": "^6.6.2"
   },
   "devDependencies": {
-    "dotenv-cli": "^4.0.0",
-    "nodemon": "^2.0.12"
+    "@faker-js/faker": "^8.4.1",
+    "dotenv-cli": "^7.4.2",
+    "nodemon": "^3.1.0"
   }
 }

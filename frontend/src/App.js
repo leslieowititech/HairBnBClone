@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 
-// import LoginFormPage from "./components/LoginFormModal";
+import LoginFormPage from "./components/Forms/LoginFormModal/index.js";
 import SignupFormPage from "./components/Forms/SignupFormPage";
 import * as sessionActions from "./store/session";
 import { Header } from "./components/Header/Header";
@@ -25,25 +25,18 @@ function App() {
         <Header isLoaded={isLoaded} />
         {isLoaded && (
           <Routes>
-            <Route exact path="/">
-              <HomePage />
-            </Route>
-            <Route exact path="/locations">
-              <AllLocations />
-            </Route>
-            <Route exact path="/locations/:stateName/:id">
-              <SingleLocation />
-            </Route>
-            <Route exact path="/locations/:stateName">
-              <LocationsInState isLoaded={isLoaded} />
-            </Route>
-
-            <Route path="/signup">
-              <SignupFormPage />
-            </Route>
-            {/* <Route path="/login">
-            <LoginFormPage />
-          </Route> */}
+            <Route path="/" element={<HomePage />} />
+            <Route path="/locations" element={<AllLocations />} />
+            <Route
+              path="/locations/:stateName/:id"
+              element={<SingleLocation />}
+            />
+            <Route
+              path="/locations/:stateName"
+              element={<LocationsInState isLoaded={isLoaded} />}
+            />
+            <Route path="/signup" element={<SignupFormPage />} />
+            <Route path="/login" element={<LoginFormPage />} />
           </Routes>
         )}
       </div>
